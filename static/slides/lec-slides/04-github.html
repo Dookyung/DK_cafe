@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Github in RStudio</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Dookyung Kim" />
+    <meta name="date" content="2018-06-30" />
+    <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Github in RStudio
+### Dookyung Kim
+### 2018-06-30
+
+---
+
+exclude: true
+
+
+
+---
+class: middle
+
+# VERSION CONTROL WITH RSTUDIO AND GITHUB
+
+
+
+---
+## table of content
+
+Getting set up with Git and RStudio
+
+1 Configure Git
+
+Version control with RStudio and Git
+
+1. Setting up a version controlled project in RStudio
+2. Making changes
+3. Setting up a remote repository on GitHub
+4. Subsequent workflow
+    -  Pull and push changes
+    -  Create a new branch
+    -  Make and push changes to a branch
+    -  Pull request and merge changes
+    
+Summary
+
+---
+## GETTING SET UP WITH GIT AND RSTUDIO
+
+시작전에 먼저 GitHub account를 만들고 Git을 설치
+
+커맨드창 열기(terminal, cmd, Ctrl+Alt+T)
+
+check version of you git
+
+```
+git version
+```
+---
+
+### CONFIGURE GIT
+
+After installing git, you need to tell it who you are. 
+Open a terminal window or command prompt (see above) and type the following:
+
+```
+git config --global user.email "you@youremail.com"
+
+git config --global user.name "Your Name"
+```
+
+On succesful completion, you should see no output from these commands. You can also configure git to use your preferred editor for commit messages:
+
+```
+# Mac or Linux:
+git config --global core.editor nano
+
+# Windows:
+git config --global core.editor notepad
+```
+
+---
+## VERSION CONTROL WITH RSTUDIO AND GIT
+
+### SETTING UP A VERSION CONTROLLED PROJECT IN RSTUDIO
+
+Create a new project in RStudio as follows:
+
+-  File -&gt; New Project -&gt; New Directory. Then click on Empty Project
+-  In the Create New Project screen, give your project a name, navigate to the directory you want to save your project in and make sure that Create a git repository is checked. Then click on Create Project.
+
+In the Create New Project screen, give your project a name,navigate to the directory you want to save your project in and make sure that Create a git repository is checked. Then click on Create Project.
+
+
+Two files are created in the otherwise empty project:
+
+-  .gitignore – Specifies files that should be ignored by the version control system.
+-  NewProject.Rproj – Configuration information for the RStudio project.
+
+---
+## Create R script
+
+First open a new R script as follows:
+
+-  File -&gt; New File -&gt; R Script
+
+Then, in the new empty R script, type the following lines of code, and click on the Run button in the top right corner of you script.
+
+```
+data(cars)
+plot(cars)
+```
+
+save your script 
+
+---
+## How to commit
+
+The git version control pane is in the top right hand corner of RStudio. Find it and click on the Git tab. You’ll see a list of the files in your project directory.
+
+Git will only keep track of modifications to files that it has been asked to manage, so you need to tell git which files to track.
+
+Tick the Staged checkbox for each file.
+
+All of your files are now staged, ready for you to record those changes as a commit. Each commit creates a snapshot of the project directory, allowing you to record the state of your project through time.
+
+Click on Commit.
+
+This will open a pane showing details of the commit. You need to specify a commit message in the right hand panel. 
+
+Once you’ve typed a commit message, click on Commit.
+
+
+A message displaying the output from git will be shown.
+
+
+Click on Close and you are done.
+
+---
+## 2.2. MAKING CHANGES
+
+Now we want to make some changes to our R script. 
+
+```
+plot(cars, col="red")
+```
+
+Save the script.
+
+Now, click on the Git tab in RStudio. You’ll notice that there’s only one file listed, since RStudio only lists files that have changed in its git interface.
+
+Click on the Staged checkbox to stage your change. Now click on Diff (next to Commit) to display a summary of what’s changed. Lines that have been added are green. Lines that have been removed are red.
+
+Add a commit message and click on Commit.
+
+In the Git tab of RStudio, click on Diff and then History. You’ll see that you can look through every commit you’ve ever made. This can be extremely useful for finding bugs or looking back to how your model looked a few months ago.
+
+---
+## 2.3. SETTING UP A REMOTE REPOSITORY ON GITHUB
+
+Likely you’ll want to connect your local repository to a remote repository using a hosting service such as GitHub. Syncing your local repository to a remote means that your code is backed up. Also, the remote repository acts as a central store for your project, allowing you to share your work or to access it from another computer.
+
+First, you need to create a GitHub repository to use as a remote. Log into GitHub and go to your profile page. On the Repositories tab, click New.
+
+At the Create a new repository screen, give your repository a name and click Create Repository.
+
+The next screen gives sets of git commands for use in various circumstances. Find the section labelled …or push an existing repository from the command line and copy the commands to the clipboard.
+
+These commands tell git to set the remote repository for your local repository.
+
+In RStudio, navigate to the Git tab and click on More -&gt; Shell….
+
+Paste the git commands into the shell and press Enter to execute them.
+
+Confirm that the project has been uploaded to your GitHub repository.
+
+---
+### Readme
+
+It is good practice to always add a README.md file to your repository. A README.md file describes your project and all the files that are in the repo. A good README.md file makes it easy for others (or the future you!) to use your code and reproduce your project.
+
+You can create a README.md file from RSTudio or in GitHub. Today we will be using the second option.
+
+From the page of your repository in GitHub click on Add a README.
+
+Now write a short description of your project, something like this.
+
+
+At the bottom of the page, you can now change the commit message and add a more detailed description of your changes if you like. For the purpose of this exercise the commit message “Create README.md” is good enough. Click on Commit new file.
+
+--- 
+## 2.4. SUBSEQUENT WORKFLOW
+
+### 2.4.1. PULL AND PUSH CHANGES
+
+When you start working on your local repository (e.g., files on your own computer), it is best to start by Pulling any new changes off of your remote repository (e.g., GitHub). Similarly, when you are finished working on them in your local repository (e.g., your computer) it is good to then Push them to the remote repository (e.g., GitHub). We will walk through this basic workflow that enables you to keep your local files in sync across multiple computers or when files may change because of someone else working on the project.
+
+To start working on a project, Pull any new changes to update your local copy.
+
+Now you can make changes on your own computer. When you are finished, to Push these changes to the remote repository (e.g., GitHub).
+
+---
+
+## Branch
+
+Master 버전의 copy 또는 snapshot을 만들어 프로그램을 변경한 후 이를 Master 버전에 merging하여 수정사항을 반영하기 위해 사용
+
+### How to create a new branch:
+
+1. [Github] 해당 repository에서 `branch: master` 버튼 클릭하고 branch name을 입력
+1. [Github] `Create branch` 박스를 클릭하고 키보드의 “Enter” 버튼 클릭
+1. [RStudio] Git탭에서 `Pull` 버튼 클릭
+1. [RStudio] Git탭의 `master` 버튼을 클릭 -&gt; branch name을 선택하여 작업공간을
+    master에서 new branch로 변경
+    
+
+---
+
+### Branch : How to change programs
+
+1. [RStudio에서] 프로그램을 수정한 후 저장
+1. Git탭에서 변경된 파일의 `Staged` 체크박스 체크
+1. `Commit` 버튼 클릭
+1. `Review changes`창이 나타나면 commit message를 입력
+1. `Commit` 버튼 클릭 -&gt; `Push` 버튼 클릭
+1. [Github으로 이동] You will notice that at the top of all you files there is a new section that says: Your recently pushed branches:. 
+    
+    1. The changes you made to your script have been pushed to your online copy of the project and are now in the branch NewPlot. 
+    
+    1. In order to merge them into your master branch we need to create a pull request.
+
+    1. In the Open a pull request page click on Create pull request.
+
+
+GitHub has now compared the two versions of your project that are in the two branches, master and NewPlot and it is telling us that there are no conflicts between the two versions.
+
+Click on the button that says *Compare and pull request*.
+
+Now it’s time to bring your changes together – merging your NewPlot branch into the master branch. Click the green Merge pull request button to merge the changes into master. Click Confirm merge. Go ahead and delete the branch, since its changes have been incorporated, with the Delete branch button in the purple box.
+
+
+---
+## 3. SUMMARY
+
+Congratulations!
+
+You now know how to set up a version controlled project with RStudio and GitHub and your computer will never be full of v1.R, v2.R etc again!
+
+You have seen that the standard workflow loop for version control in RStudio is very quick and simple:
+
+Create a new branch
+Make your change
+Stage your change
+Commit
+Push to GitHub
+Create a pull request
+Merge your changes
+As well as this basic workflow, you’ve learned how to look at changes using Diff and to inspect your project’s history.
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

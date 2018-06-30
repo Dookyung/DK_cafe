@@ -9,6 +9,7 @@ lessons:
   - title: "Introduction"
   - title: "Basic R"
   - title: "Using github"
+    slides: "lec-slides/04-github.html"
   - title: "Functional Programming"
   - date: "Day2"  
     title: "Data Structure & Tidy Data"

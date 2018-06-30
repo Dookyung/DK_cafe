@@ -232,20 +232,13 @@ Master 버전의 copy 또는 snapshot을 만들어 프로그램을 변경한 후
 1. `Commit` 버튼 클릭
 1. `Review changes`창이 나타나면 commit message를 입력
 1. `Commit` 버튼 클릭 -> `Push` 버튼 클릭
-1. [Github으로 이동] You will notice that at the top of all you files there is a new section that says: Your recently pushed branches:. 
-    
-    1. The changes you made to your script have been pushed to your online copy of the project and are now in the branch NewPlot. 
-    
-    1. In order to merge them into your master branch we need to create a pull request.
-
-    1. In the Open a pull request page click on Create pull request.
-
-
-GitHub has now compared the two versions of your project that are in the two branches, master and NewPlot and it is telling us that there are no conflicts between the two versions.
-
-Click on the button that says *Compare and pull request*.
-
-Now it’s time to bring your changes together – merging your NewPlot branch into the master branch. Click the green Merge pull request button to merge the changes into master. Click Confirm merge. Go ahead and delete the branch, since its changes have been incorporated, with the Delete branch button in the purple box.
+1. [Github으로 이동] 해당 repository 상단에 "Your recently pushed branches:" 메시지 확인
+1. Click `create a pull request`.
+1. 두 버전건 충돌 없음 메시지 확인
+1. Click on the button that says **Compare and pull request**.
+1. Click the green **Merge pull request** button.
+1. Click the green **Confirm merge** button.
+1. Click the **Delete branch** button in the purple box.
 
 
 ---

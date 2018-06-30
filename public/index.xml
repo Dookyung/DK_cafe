@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Big Data Analytics with R</title>
+    <link>/</link>
+    <description>Recent content on Big Data Analytics with R</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Jun 2018 21:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>R Package 만들기 2</title>
+      <link>/post/2018-06-06-r-package2/</link>
+      <pubDate>Thu, 07 Jun 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-06-06-r-package2/</guid>
+      <description>R 패키지 구조 이해하기 library(devtools) R 패키지의 구조 이번 포스팅에서는 우리가 만들어 놓은 폴더와 파일들이 패키지에서 어떠한 역할을 하는지에 대하여 알아보자. 패키지가 깔려</description>
+    </item>
+    
+    <item>
+      <title>R Package 만들기 3</title>
+      <link>/post/2018-06-06-r-package3/</link>
+      <pubDate>Thu, 07 Jun 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-06-06-r-package3/</guid>
+      <description>Description 파일 설정 library(devtools) DESCRIPTION 파일 설정 Description 파일을 열어 내용을 보면 다음과 같다. Package: r4issactoast Type: Package Title: What the Package Does (Title Case) Version: 0.1.0 Author: Who wrote it Maintainer: The package maintainer &amp;lt;yourself@somewhere.net&amp;gt; Description: More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.</description>
+    </item>
+    
+    <item>
+      <title>R Package 만들기 4</title>
+      <link>/post/2018-06-07-r-package4/</link>
+      <pubDate>Thu, 07 Jun 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-06-07-r-package4/</guid>
+      <description>나만의 함수 추가하기 with roxygen2 library(devtools) library(roxygen2) 아래와 같은 감마분포의 MOME 함수를 패키지에 넣도록 하겠다. mom_gamma &amp;lt;- function(sample_g){ x_bar &amp;lt;- mean(sample_g) x2_bar &amp;lt;- mean(sample_g^2) mom_theta &amp;lt;- (x2_bar - x_bar^2) / x_bar mom_k &amp;lt;- x_bar / mom_theta list(k_hat = mom_k, theta_hat = mom_theta) } 위의 코드</description>
+    </item>
+    
+    <item>
+      <title>R Package 만들기 5</title>
+      <link>/post/2018-06-07-r-package5/</link>
+      <pubDate>Thu, 07 Jun 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-06-07-r-package5/</guid>
+      <description>Import, Suggests, and README.Rmd에 대하여 오늘 배울 내용은 우리의 패키지를 만드는 과정에서 다른 패키지들에 존재하는 함수를 빌려서 사용하는 방법을 알아보자. mle_gamma() 함수</description>
+    </item>
+    
+    <item>
+      <title>R Package 만들기 5</title>
+      <link>/post/2018-06-07-r-package6/</link>
+      <pubDate>Thu, 07 Jun 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-06-07-r-package6/</guid>
+      <description>설명서(Vignette)와 마크다운(markdown)에 대하여 Vignette이란 책의 타이틀 페이지나 요약본이라는 뜻으로, 패키지의 설명서를 의</description>
+    </item>
+    
+    <item>
+      <title>R Package 만들기 1</title>
+      <link>/post/2018-06-06-r-package/</link>
+      <pubDate>Wed, 06 Jun 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-06-06-r-package/</guid>
+      <description>Creating My Own R Package 조직내에서 R을 체계적으로 활용하기 위해서는 R 스크립트의 재사용, 체계적 주석, 유지보수, 온라인 배포 등을 위해 R 패키지를 작성하여 배포하는 방식</description>
+    </item>
+    
+    <item>
+      <title>Introduction</title>
+      <link>/post/2018-04-29-database-sql/</link>
+      <pubDate>Tue, 29 May 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-04-29-database-sql/</guid>
+      <description>Introduction Data science is an exciting discipline that allows you to turn raw data into understanding, insight, and knowledge. The goal of “R for Data Science” is to help you learn the most important tools in R that will allow you to do data science. After reading this book, you’ll have the tools to tackle a wide variety of data science challenges, using the best parts of R.
+What you will learn Data science is a huge field, and there’s no way you can master it by reading a single book.</description>
+    </item>
+    
+    <item>
+      <title>Course Schedule</title>
+      <link>/schedule/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/schedule/</guid>
+      <description>Date Time Lecture Notes Readings Day1 Session 1 Introduction Session 2 Basic R Session 3 Using github Session 4 Functional Programming Day2 Session 1 Data Structure &amp; Tidy Data Session 2 Data wrangling with dplyr Session 3 Web Scraping Session 4 Shiny and Rmarkdown Day3 Session 1 Parallelization Session 2 Database &amp; SQL Session 3 Bigish Data Day 4 Session 1 SparklyR Session 2 Real World Data Science Topics 소</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/syllabus/</link>
+      <pubDate>Wed, 19 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/syllabus/</guid>
+      <description> Course Schedule Note: Due dates of exams and project will not move, however the timeline of topics and smaller assignments might be updated throughout the semester.   Date Title Slides Reading Lab   Day1 Welcome to Data Science       Logic in R       Introduction       Basic R       Using github       Functional Programming      Day2 Data Structure &amp;amp; Tidy Data       Data wrangling with dplyr       Web Scraping       Shiny and Rmarkdown       Parallelization      Day3 Database &amp;amp; SQL       Bigish Data       SparklyR       Real World Data Science       </description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about1/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/about1/</guid>
+      <description>Hugo is a static site engine written in Go.
+It makes use of a variety of open source projects including:
+ Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.
+Setup Some fun facts about Hugo:
+ Built in Go Loosely inspired by Jekyll Primarily developed by spf13 on the train while commuting to and from Manhattan. Coded in Vim using spf13-vim  Have questions or suggestions?</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact1/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/contact1/</guid>
+      <description> First Name  Last Name  E-Mail  City  State AL CA IL      Send   </description>
+    </item>
+    
+  </channel>
+</rss>

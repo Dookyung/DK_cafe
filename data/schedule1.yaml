@@ -1,0 +1,274 @@
+startdate: "2018-01-09"
+dateFormat: 'Mon, Jan 2'
+schedule:
+- week: 0
+  day: 0
+  lecture: "Introduction"
+  slides: Lec00
+  readings: 
+  - text: Codeschool - Try R
+    link: https://www.codeschool.com/courses/try-r
+  notes: <a href="https://duke.qualtrics.com/jfe/form/SV_2fTkRpG2ucw8ajz">Enrollment Survey</a>
+
+- week: 1
+  day: 0
+  lecture: "Logic in R"
+  slides: Lec01
+  readings:
+  - text: Google's R style guide
+    link: https://google-styleguide.googlecode.com/svn/trunk/Rguide.xml
+  - text: Hadley's R style guide
+    link: http://r-pkgs.had.co.nz/style.html
+  notes: "<a href='https://vm-manage.oit.duke.edu/containers/rstudio'>RStudio OIT VM</a>"
+
+- week: 1
+  day: 2
+  lecture: "<i>Class canceled - snow day</i>"
+
+- week: 1
+  day: 3
+  lecture: "Using git and github"
+  slides: Lec02
+  readings:
+  - text: Happy Git and GitHub
+    link: http://happygitwithr.com/
+  - text: Try GitHub
+    link: https://try.github.io/
+  notes: "<a href='homework/hw1.html'>HW1</a> - due Mon, Jan 29th by 11:59 pm"
+  screencast: https://youtu.be/3uePrJ5ByfI
+
+- week: 2
+  day: 0
+  lecture: "Vectors & Types"
+  slides: Lec03
+  readings: 
+  - text: Adv-R - Data Structures
+    link: http://adv-r.had.co.nz/Data-structures.html
+  notes: ""
+
+
+- week: 2
+  day: 2
+  lecture: "Data Structures & Subsetting"
+  slides: Lec04
+  readings:
+  - text: Adv-R - Subsetting
+    link: http://adv-r.had.co.nz/Subsetting.html
+  notes: ""
+
+- week: 3
+  day: 0
+  lecture: "dplyr"
+  slides: Lec05
+  readings:
+  - text: dplyr Vignette
+    link: https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+  - text: Data transformation cheatsheet
+    link: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
+  notes: "<a href='homework/hw2.html'>HW2</a> - due Tue, Feb 6th by 11:59 pm <br/> RStudio Server: <a href='https://gort.stat.duke.edu:8787'>gort</a>"
+
+- week: 3
+  day: 2
+  lecture: "<i>No class</i>"
+
+- week: 4
+  day: 0
+  lecture: "tidyr & purrr"
+  slides: Lec06_tidyr
+  readings:
+  - text: tidy data Vignette
+    link: https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
+  - text: R4DS - tidy data
+    link: http://r4ds.had.co.nz/tidy-data.html
+  - text: Purrr tutorial
+    link: https://jennybc.github.io/purrr-tutorial/index.html
+  notes: "HW3 - due Tue, Feb 20th by 11:59 pm"
+
+- week: 4
+  day: 2
+  lecture: "More purrr"
+  screencast: https://youtu.be/pekrHwJOAwo
+  slides: Lec07_purrr
+  readings:
+  - text: R4DS - Iteration
+    link: http://r4ds.had.co.nz/iteration.html
+  - text: purrr cheatsheet
+    link: https://github.com/rstudio/cheatsheets/raw/master/purrr.pdf
+  notes: ""
+
+- week: 5
+  day: 0
+  lecture: "ggplot2"
+  slides: Lec08_ggplot2
+  readings:
+  - text:  R4DS - Visualization
+    link: http://r4ds.had.co.nz/data-visualisation.html
+  - text: ggplot2 Reference
+    link: http://ggplot2.tidyverse.org/reference/index.html
+  notes: ""
+
+- week: 5
+  day: 2
+  lecture: "Visualization"
+  readings: ""
+  notes: "<a href='https://www.dropbox.com/sh/3nznj0bhf84uoix/AAACIx5tI6JLCUSpR6egWipxa/STA112FS_VisDayOneSlides_Fall2017.pdf?dl=0'>Angela & Eric's slides</a>"
+
+- week: 6
+  day: 0
+  lecture: "Text data & Regular expressions"
+  slides: Lec10_regex
+  readings:
+  - text: Regex Cheat Sheet, 
+    link: http://perso.ens-lyon.fr/lise.vaudor/Rfigures/Expressions_regulieres/regexp.png
+  - text: stringr vignette
+    link: https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html
+  notes: "<a href='https://regexr.com/'>Interactive RegEx tool</a>"
+
+- week: 6
+  day: 2
+  lecture: "Web scraping (pt. 1)"
+  slides: Lec11_scraping
+  screencast: https://youtu.be/unZDOUdsBTU
+  readings:
+  - text: rvest - selector gadget vignette
+    link: https://cran.r-project.org/web/packages/rvest/vignettes/selectorgadget.html
+  notes: "<a href='https://raw.githubusercontent.com/Sta323-Sp18/exercises/master/2018_02_22_exercises.R'>Exercise code</a>"
+
+- week: 7
+  day: 0
+  lecture: "Web scraping (pt. 2)"
+  readings: ""
+  notes: "HW4 - due Fri, Mar 9th by 11:59 pm"
+
+- week: 7
+  day: 2
+  lecture: "Make"
+  slides: Lec12_make
+  readings:
+  - text: minimal make
+    link: http://kbroman.org/minimal_make/
+  - text: Why use make
+    link: http://bost.ocks.org/mike/make/
+  notes: ""
+
+- week: 8
+  day: 0
+  lecture: "Parallelization"
+  slides: Lec13_parallel
+  readings:
+  - text: parallel package
+    link: https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf
+  - text: doMC and foreach
+    link: http://cran.r-project.org/web/packages/doMC/vignettes/gettingstartedMC.pdf
+  notes: ""
+
+- week: 8
+  day: 2
+  lecture: "Web APIs"
+  slides: Lec14_web_apis
+  readings:
+  - text: httr vignette
+    link: https://cran.r-project.org/web/packages/httr/vignettes/quickstart.html
+  notes: ""
+
+- week: 9
+  day: 0
+  lecture: "<i>No class - Spring recess</i>"
+  readings: ""
+  notes: ""
+
+- week: 9
+  day: 2
+  lecture: "<i>No class - Spring recess</i>"
+  readings: ""
+  notes: ""
+
+- week: 10
+  day: 0
+  lecture: "Shiny"
+  screencast: https://youtu.be/SeQO3ACeN-8
+  readings:
+  - text: Shiny Documentation & Gallery
+    link: http://shiny.rstudio.com/
+  - text: Widget Gallery
+    link: http://shiny.rstudio.com/gallery/widget-gallery.html
+  notes: ""
+
+- week: 10
+  day: 2
+  lecture: "Reactive Data"
+  readings: ""
+  notes: ""
+  screencast: https://youtu.be/Cqd8WRAhszs
+
+- week: 11
+  day: 0
+  lecture: "Profiling"
+  screencast: https://youtu.be/N6Y5l0nffiE
+  readings: 
+  - text: profvis
+    link: https://rstudio.github.io/profvis/
+  notes: ""
+
+- week: 11
+  day: 2
+  lecture: "Databases & sql"
+  readings: ""
+  notes: ""
+  slides: Lec15_sql
+
+- week: 12
+  day: 0
+  lecture: "Bigish data"
+  slides: Lec16_bigish_data
+  readings: 
+  - text: dbplyr Vignette
+    link: https://cran.r-project.org/web/packages/dbplyr/vignettes/dbplyr.html
+  - text: SQL Translation
+    link: https://cran.r-project.org/web/packages/dbplyr/vignettes/sql-translation.html
+  
+
+- week: 12
+  day: 2
+  lecture: "Spatial data"
+  slides: Lec17_Spatial
+  readings:
+  - text: "sf Vignettes"
+    link: https://cran.r-project.org/web/packages/sf/vignettes/
+  notes: "HW6 - due by 11:59 pm on Tuesday, April 17th"
+
+- week: 13
+  day: 0
+  lecture: "Precinct boundaries (pt. 1)"
+  readings: ""
+  notes: ""
+
+- week: 13
+  day: 2
+  lecture: "Precinct boundaries (pt. 2)"
+  readings: ""
+  notes: ""
+
+- week: 14
+  day: 0
+  lecture: "SparklyR"
+  readings: ""
+  notes: "Midterm 2 out - due Friday April 27th by 11:59 pm"
+
+- week: 14
+  day: 2
+  lecture: "SparklyR & text data"
+  readings: ""
+  notes: ""
+
+- week: 15
+  day: 0
+  lecture: "Exam workday"
+  readings: ""
+  notes: ""
+
+- week: 16
+  day: 2
+  lecture: "Final Project due by 11:59 pm"
+  readings: ""
+  notes: ""

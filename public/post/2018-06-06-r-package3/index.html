@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.35" />
+
+  <title>R Package 만들기 3 &middot; Big Data Analytics with R</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../../css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="../../css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="../../css/blackburn.css">
+  <link rel="stylesheet" href="../../css/schedule.css">
+  <link rel="stylesheet" href="../../css/menu.css">
+
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="../../">DK Cafe</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../"><i class='fa fa-home fa-fw'></i>Blog</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../schedule/"><i class='fa fa-calendar-check'></i>Schedule</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../syllabus/"><i class='fa fa-calendar-check'></i>R4DS Course</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://dkkim.netlify.com/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>R Package 만들기 3</h1>
+  <h2></h2>
+</div>
+<div class="content">
+
+  <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 07</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  <div id="description--" class="section level1">
+<h1>Description 파일 설정</h1>
+<pre class="r"><code>library(devtools)</code></pre>
+<div id="description---1" class="section level2">
+<h2>DESCRIPTION 파일 설정</h2>
+<p>Description 파일을 열어 내용을 보면 다음과 같다.</p>
+<pre><code>Package: r4issactoast
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true</code></pre>
+<p>DESCRIPTION 파일에 들어갈 필수 항목은 ‘Package’, ‘Version’, ‘License’, ‘Description’, ‘Title’, ‘Author’, ‘Maintainer’ 항목이다.</p>
+<ul>
+<li><strong>Package</strong> : 패키지 이름을 입력</li>
+<li><strong>Title</strong> : 패키지를 설명할 수 있는 짧은 문장. (Title Case)</li>
+</ul>
+<pre class="r"><code>tools::toTitleCase(&quot;favorite R functions for &lt;www.issactoast.com&gt;&quot;)
+## [1] &quot;Favorite R Functions for &lt;www.issactoast.com&gt;&quot;</code></pre>
+<ul>
+<li><p><strong>Version</strong> : 패키지 버전은 . 혹은 -를 사용하여 입력한다.</p></li>
+<li><p><strong>Date</strong> : 패키지를 만든 날짜</p></li>
+<li><p><strong>Author</strong> &amp; <strong>Maintainer</strong> : 패키지 작성자, 유지관리자</p></li>
+</ul>
+<pre><code>Authors@R: person(&quot;Issac&quot;, &quot;Lee&quot;, email = &quot;issactoast@gmail.com&quot;, 
+                  role = c(&quot;aut&quot;, &quot;cre&quot;))</code></pre>
+<pre class="r"><code>person(&quot;Issac&quot;, &quot;Lee&quot;, email = &quot;issactoast@gmail.com&quot;, role = c(&quot;aut&quot;, &quot;cre&quot;))
+## [1] &quot;Issac Lee &lt;issactoast@gmail.com&gt; [aut, cre]&quot;</code></pre>
+</div>
+<div id="issac-lee-issactoastgmail.com-aut-cre" class="section level2">
+<h2>[1] “Issac Lee <a href="mailto:issactoast@gmail.com">issactoast@gmail.com</a> [aut, cre]”</h2>
+<ul>
+<li><strong>License</strong> : 패키지 라이선스 (MIT 등) . use_mit_license() 함수를 이용하면, 자동으로 DESCRIPTION 파일 내용을 바꿔줌</li>
+</ul>
+<pre><code>use_mit_license(copyright_holder = &quot;Issac Lee&quot;)</code></pre>
+<p>위의 결과로 DESCRIPTION 파일의 license항목이 MIT + file LICENSE로 바뀌고, LICENSE라는 이름의 파일이 폴더에 생성된 것을 확인 할 수 있다.</p>
+<ul>
+<li><strong>LazyData</strong> : true. 패키지에 딸려있는 데이터가 존재하는 경우</li>
+</ul>
+</div>
+<div id="description--" class="section level2">
+<h2>DESCRIPTION 파일 내용</h2>
+<p>Package: r4issactoast Type: Package Version: 0.1.0 Date: 2017-07-05 Title: Favorite R Functions for &lt;www.issactoast.com&gt; <a href="mailto:Authors@R">Authors@R</a>: c(person(“Issac”, “Lee”, role = c(“aut”, “cre”), email = “<a href="mailto:issactoast@gmail.com">issactoast@gmail.com</a>”)) Description: This package has many functions which are used in &lt;www.issactoast.com&gt; blog statistics posts. All the explations and applications of functions can be found in the website given in the title. License: MIT + file LICENSE Encoding: UTF-8 LazyData: true</p>
+<p>이제 우리가 만든 패키지의 메타데이터를 다 채웠다. 이것을 확인하기 위하여 다음의 citation() 함수를 이용하여 패키지 레퍼런스를 확인해보자.</p>
+<pre class="r"><code>load_all()
+citation(&quot;R4me&quot;)</code></pre>
+<pre><code>패키지 ‘R4me’를 출판의 목적으로 인용하고자 한다면 다음과 같이 사용하세요:
+
+  Dookyung Kim (2017). R4me: Favorite R Functions for &lt;www.R4me.com&gt;. R package
+  version 0.1.0.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {R4me: Favorite R Functions for &lt;www.R4me.com&gt;},
+    author = {Dookyung Kim},
+    year = {2017},
+    note = {R package version 0.1.0},
+  }</code></pre>
+</div>
+<div id="license-" class="section level2">
+<h2>License에 대하여</h2>
+<ul>
+<li><strong>MIT</strong> : MIT 라이선스(MIT License)는 미국 매사추세츠 공과대학교(MIT)에서 해당 대학의 소프트웨어 공학도들을 돕기 위해 개발한 라이선스다. MIT 라이선스를 따르는 소프트웨어를 개조한 제품을 반드시 오픈 소스로 배포해야 한다는 규정이 없으며 GNU 일반 공중 라이선스의 엄격함을 피하려는 사용자들에게 인기가 있다.</li>
+</ul>
+<p>사실 필자가 이해하는 MIT 라이선스의 골자는 다음과 같다. 이 라이선스의 특징은 자유롭게 이용하되, 배포할 때 라이선스를 같이 배포해야 한다(우리의 경우는 파일)는 조건이 있다.</p>
+<ul>
+<li><strong>GPL-2</strong>: 자유 소프트웨어 재단(OSF)에서 만든 자유 소프트웨어 라이선스다. 미국의 리처드 스톨만(Richard Stallman)이 GNU-프로젝트로 배포된 프로그램의 라이선스로 사용하기 위해 작성했다.</li>
+</ul>
+<p>프로그램을 어떤 목적으로든지 사용할 수 있다. 프로그램의 복사를 언제나 프로그램의 코드와 함께 판매 또는 무료로 배포할 수 있다. 프로그램의 코드를 용도에 따라 결정할 수 있다. 변경된 프로그램 역시 프로그램의 코드와 함께 자유로이 배포할 수 있다. 대부분의 소프트웨어에 대한 라이선스는 소프트웨어를 공유하거나 수정할 수 있는 자유를 금지하기 위해 고안되었다. 반면에 GNU 일반 공중 라이선스는 자유 소프트웨어를 공유하고 수정할 수 있는 자유를 보장하기 위해 의도되었다. 즉, 소프트웨어가 사용자 모두에게 자유롭게 이용될 수 있도록 하는 것이다.</p>
+<p>필자가 이해하는 GPL-2 라이선스의 골자는 다음과 같다. 나의 코드를 마음대로 가져다가 써도되고, 판매해도 된다. 하지만 이 라이선스의 코드를 가져다 쓴다면 그의 부산물 역시 GPL로 공개 해야만 한다.</p>
+<p>참고 문헌 [1] Wickham, Hadley. R packages: organize, test, document, and share your code. &quot; O’Reilly Media, Inc.“, 2015.</p>
+<p>[2] Jennifer (Jenny) Bryan, Write your own R package STAT 545</p>
+<p>[3] 오픈소스SW라이선스 종합정보시스템 (<a href="https://olis.or.kr/license/introduction.do" class="uri">https://olis.or.kr/license/introduction.do</a>)</p>
+<p>[4] Writing R extension 페이지 (<a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file</a>)</p>
+</div>
+</div>
+
+
+  
+<div class="prev-next-post pure-g">
+  <div class="pure-u-1-24" style="text-align: left;">
+    
+    <a href="../../post/2018-06-07-r-package4/"><i class="fa fa-chevron-left"></i></a>
+    
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="prev">
+      <a href="../../post/2018-06-07-r-package4/">R Package 만들기 4</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-2-24">
+    &nbsp;
+  </div>
+  <div class="pure-u-10-24">
+    
+    <nav class="next">
+      <a href="../../post/2018-06-06-r-package2/">R Package 만들기 2</a>
+    </nav>
+    
+  </div>
+  <div class="pure-u-1-24" style="text-align: right;">
+    
+    <a href="../../post/2018-06-06-r-package2/"><i class="fa fa-chevron-right"></i></a>
+    
+  </div>
+</div>
+
+
+
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    if (window.location.hostname == "localhost")
+        return;
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'Your Disqus shortname';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+</div>
+
+</div>
+</div>
+<script src="../../js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>
+

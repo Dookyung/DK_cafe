@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="generator" content="Hugo 0.35" />
+
+  <title>Devtools &middot; Big Data Analytics with R</title>
+
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/pure-min.css">
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/1.0.0/grids-responsive-min.css">
+  <!--<![endif]-->
+
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../../css/side-menu-old-ie.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" href="../../css/side-menu.css">
+  <!--<![endif]-->
+
+  <link rel="stylesheet" href="../../css/blackburn.css">
+  <link rel="stylesheet" href="../../css/schedule.css">
+  <link rel="stylesheet" href="../../css/menu.css">
+
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+ 
+  
+  <link rel="alternate" type="application/rss+xml" title="Big Data Analytics with R" href="../../tags/devtools/index.xml" />
+  
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/androidstudio.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon" />
+
+  
+  
+
+</head>
+
+
+<body>
+<div id="layout">
+
+  
+<a href="#menu" id="menuLink" class="menu-link">
+  
+  <span></span>
+</a>
+<div id="menu">
+
+  
+  <a class="pure-menu-heading brand" href="../../">DK Cafe</a>
+
+
+  <div class="pure-menu">
+    <ul class="pure-menu-list">
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../"><i class='fa fa-home fa-fw'></i>Blog</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../schedule/"><i class='fa fa-calendar-check'></i>Schedule</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../syllabus/"><i class='fa fa-calendar-check'></i>R4DS Course</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="../../post/"><i class='fa fa-list fa-fw'></i>Posts</a>
+      
+        </li>
+      
+      
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://dkkim.netlify.com/"><i class='fa fa-user fa-fw'></i>About</a>
+      
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="pure-menu social">
+  <ul class="pure-menu-list">
+
+    
+    <li class="pure-menu-item">
+      <a class="pure-menu-link" href="../../tags/devtools/index.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+    </li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+  </ul>
+</div>
+
+
+  <div>
+  <div class="small-print">
+    <small></small>
+  </div>
+  <div class="small-print">
+    <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
+    <small>Theme&nbsp;<a href="https://github.com/yoshiharuyamashita/blackburn" target="_blank">Blackburn</a></small>
+  </div>
+</div>
+
+</div>
+
+
+  <div id="main">
+
+
+<div class="header">
+  <h1>Devtools</h1>
+</div>
+
+<div class="content">
+  
+    <article>
+  <header>
+    <h2><a href="../../post/2018-06-06-r-package2/">R Package 만들기 2</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 07</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  R 패키지 구조 이해하기 library(devtools) R 패키지의 구조 이번 포스팅에서는 우리가 만들어 놓은 폴더와 파일들이 패키지에서 어떠한 역할을 하는지에 대하여 알아보자. 패키지가 깔려
+  </p>
+
+  
+  <footer>
+    <a href="../../post/2018-06-06-r-package2/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="../../post/2018-06-06-r-package3/">R Package 만들기 3</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 07</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Description 파일 설정 library(devtools) DESCRIPTION 파일 설정 Description 파일을 열어 내용을 보면 다음과 같다. Package: r4issactoast Type: Package Title: What the Package Does (Title Case) Version: 0.1.0 Author: Who wrote it Maintainer: The package maintainer &lt;yourself@somewhere.net&gt; Description: More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+  </p>
+
+  
+  <footer>
+    <a href="../../post/2018-06-06-r-package3/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="../../post/2018-06-07-r-package4/">R Package 만들기 4</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 07</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  나만의 함수 추가하기 with roxygen2 library(devtools) library(roxygen2) 아래와 같은 감마분포의 MOME 함수를 패키지에 넣도록 하겠다. mom_gamma &lt;- function(sample_g){ x_bar &lt;- mean(sample_g) x2_bar &lt;- mean(sample_g^2) mom_theta &lt;- (x2_bar - x_bar^2) / x_bar mom_k &lt;- x_bar / mom_theta list(k_hat = mom_k, theta_hat = mom_theta) } 위의 코드
+  </p>
+
+  
+  <footer>
+    <a href="../../post/2018-06-07-r-package4/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="../../post/2018-06-07-r-package5/">R Package 만들기 5</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 07</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Import, Suggests, and README.Rmd에 대하여 오늘 배울 내용은 우리의 패키지를 만드는 과정에서 다른 패키지들에 존재하는 함수를 빌려서 사용하는 방법을 알아보자. mle_gamma() 함수
+  </p>
+
+  
+  <footer>
+    <a href="../../post/2018-06-07-r-package5/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="../../post/2018-06-07-r-package6/">R Package 만들기 5</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 07</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  설명서(Vignette)와 마크다운(markdown)에 대하여 Vignette이란 책의 타이틀 페이지나 요약본이라는 뜻으로, 패키지의 설명서를 의
+  </p>
+
+  
+  <footer>
+    <a href="../../post/2018-06-07-r-package6/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+    <article>
+  <header>
+    <h2><a href="../../post/2018-06-06-r-package/">R Package 만들기 1</a></h2>
+
+    <div class="post-meta">
+
+  <div>
+    <i class="fa fa-calendar fa-fw"></i>
+    <time>Jun 06</time>
+  </div>
+
+  
+
+  
+
+  
+  
+  
+  <div>
+    <i class="fa fa-tags fa-fw"></i>
+    
+      <a class="post-taxonomy-tag" href="../../tags/devtools">devtools</a>
+    
+  </div>
+  
+  
+
+</div>
+
+  </header>
+
+  <p>
+  Creating My Own R Package 조직내에서 R을 체계적으로 활용하기 위해서는 R 스크립트의 재사용, 체계적 주석, 유지보수, 온라인 배포 등을 위해 R 패키지를 작성하여 배포하는 방식
+  </p>
+
+  
+  <footer>
+    <a href="../../post/2018-06-06-r-package/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
+  </footer>
+  
+</article>
+
+  
+</div>
+
+</div>
+</div>
+<script src="../../js/ui.js"></script>
+
+
+
+
+
+
+</body>
+</html>

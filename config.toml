@@ -1,0 +1,84 @@
+baseurl = "/"
+relativeurls = true
+languageCode = "en-us"
+title = "Big Data Analytics with R"
+theme = "blackburn"
+author = "Dookyung Kim"
+## copyright = "&copy; 2018. All rights reserved."
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+## canonifyurls = true
+## paginate = 10
+hasCJKLanguage = true
+
+
+[indexes]
+  tag = "tags"
+  topic = "topics"
+
+[params]
+  # Shown in the home page
+  subtitle = "Dookyung Kim"
+  brand = "DK Cafe"
+##  googleAnalytics = "Your Google Analytics tracking ID"
+  disqus = "Your Disqus shortname"
+  # CSS name for highlight.js
+  highlightjs = "androidstudio"
+  dateFormat = "Jan 02"
+##  dateFormat = "02 Jan 2006, 15:04"
+  
+[params.logo]
+    url = "logo.png"
+    width = 50
+    height = 50
+    alt = "Logo"
+
+[menu]
+  # Shown in the side menu.
+  [[menu.main]]
+    name = "Blog"
+    pre = "<i class='fa fa-home fa-fw'></i>"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "Schedule"
+    pre = "<i class='fa fa-calendar-check'></i>"
+    weight = 2
+    identifier = "schedule"
+    url = "/schedule/"
+  [[menu.main]]
+    name = "R4DS Course"
+    pre = "<i class='fa fa-calendar-check'></i>"
+    weight = 3
+    identifier = "syllabus"
+    url = "/syllabus/"
+  [[menu.main]]
+    name = "Posts"
+    pre = "<i class='fa fa-list fa-fw'></i>"
+    weight = 4
+    identifier = "post"
+    url = "/post/"
+  [[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-user fa-fw'></i>"
+    weight = 5
+    identifier = "about"
+    url = "https://dkkim.netlify.com/"
+##  [[menu.main]]
+##    name = "Contact"
+##    pre = "<i class='fa fa-phone fa-fw'></i>"
+##    weight = 6
+##    url = "/contact/"
+
+[social]
+  # Link your social networking accouns to the side menu
+  # by entering your username or ID.
+##  twitter = "*"
+##  facebook = "*"
+##  instagram = "*"
+##  github = "yoshiharuyamashita"
+##  stackoverflow = "*"
+##  linkedin = "*"
+
+#[permalinks]
+#    post = "/:year/:month/:day/:slug/"

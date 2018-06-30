@@ -1,0 +1,51 @@
+<b>Note:</b> Due dates of exams and project will not move, however the timeline of topics and smaller assignments might be updated throughout the semester.
+
+
+<br><br>
+
+<div class="schedule-tbl">
+<table>
+  <tr>
+    <th style="width:15%;text-align:left">Date</th>
+    <th style="width:45%">Title</th>
+    <th style="width:5%;text-align:left">Slides</th>
+    <th style="width:5%;text-align:center">Reading</th>
+    <th style="width:5%;text-align:center">Lab</th>
+  </tr>
+
+  {{ range $.Site.Data.lessons }}
+    {{range . }}
+    <tr>
+      <td align="right">{{ .date }}</td>
+      <td>{{ .title }}</td>
+
+      {{ if .slides }}
+      <td align="center"><a href="{{ .Site.baseurl }}/slides/{{ .slides  }}">
+          <i class="fa fa-laptop  fa-lg"></i></a></td>
+      {{ else }}
+        <td align="center"><font color="f1f1f1">
+          <i class="fa fa-laptop  fa-lg"></i></font></td>
+      {{ end }}
+      
+      {{ if .reading }}
+      <td align="center"><a href="{{ .Site.baseurl }}/reading/{{ .reading  }}">
+          <i class="fa fa-book fa-lg"></i></a></td>
+      {{ else }}
+        <td align="center"><font color="f1f1f1">
+          <i class="fa fa-book fa-lg"></i></font></td>
+      {{ end }}
+
+      {{ if .lab }}
+      <td align="center"><a href="{{ .Site.baseurl }}/labs/{{ .lab }}">
+          <i class="fa fa-code fa-lg"></i></a></td>
+      {{ else }}
+        <td align="center"><font color="f1f1f1">
+          <i class="fa fa-code fa-lg"></i></font></td>
+      {{ end }}
+      
+    </tr>
+    {{ end }}
+  {{ end }}
+
+</table>
+</div>

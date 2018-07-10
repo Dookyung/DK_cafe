@@ -1,5 +1,5 @@
 ---
-title: "Git"
+title: "Github in RStudio"
 author: "Dookyung Kim"
 date: "2018-06-30"
 output:
@@ -212,53 +212,34 @@ Now you can make changes on your own computer. When you are finished, to Push th
 
 ## Branch
 
-Branching하는 순간의 master 버전의 copy 또는 snapshot을 만들어 프로그램을 변경하고 이후에 이를 Master 버전에 merging하여 수정사항을 반영하기 위해 사용
+Master 버전의 copy 또는 snapshot을 만들어 프로그램을 변경한 후 이를 Master 버전에 merging하여 수정사항을 반영하기 위해 사용
 
 ### How to create a new branch:
 
--  [Github에서] 
-
-    1. Github repository에서 왼쪽 중간의 `branch: master`라는 풀다운 메뉴를 클릭하고 branch name을 입력
-
-    1. 파란색 `Create branch` 박스를 클릭하고 키보드의 “Enter” 버튼 클릭
-
--  [RStudio에서] 
-
-    1. Git탭에서 `Pull` 버튼 클릭
-
-    1. Git탭의 `master` 버튼을 클릭하면 나타나는 풀다운 메뉴에서 새로 생성했던 branch name을 선택하여 작업대상공간을 master에서 new branch로 변경
+1. [Github] 해당 repository에서 `branch: master` 버튼 클릭하고 branch name을 입력
+1. [Github] `Create branch` 박스를 클릭하고 키보드의 “Enter” 버튼 클릭
+1. [RStudio] Git탭에서 `Pull` 버튼 클릭
+1. [RStudio] Git탭의 `master` 버튼을 클릭 -> branch name을 선택하여 작업공간을
+    master에서 new branch로 변경
     
 
 ---
 
 ### Branch : How to change programs
 
--  [RStudio에서] 
-
-    1. 프로그램을 수정한 후 저장
-    
-    1. Git탭에서 변경된 파일들의 `Staged` 체크박스 선택한 후 `Commit` 버튼 클릭
-    
-    1. `Review changes` 창이 나타나면 commit message를 입력하고 `Commit` 버튼 클릭
-    
-    1. 마지막으로 `Push` 버튼을 클릭하면 변경된 내용이 github에 반영
-
--  [Github에서] 
-
-    1. You will notice that at the top of all you files there is a new section that says: Your recently pushed branches:. 
-    
-    1. The changes you made to your script have been pushed to your online copy of the project and are now in the branch NewPlot. 
-    
-    1. In order to merge them into your master branch we need to create a pull request.
-
-    1. In the Open a pull request page click on Create pull request.
-
-
-GitHub has now compared the two versions of your project that are in the two branches, master and NewPlot and it is telling us that there are no conflicts between the two versions.
-
-Click on the button that says *Compare and pull request*.
-
-Now it’s time to bring your changes together – merging your NewPlot branch into the master branch. Click the green Merge pull request button to merge the changes into master. Click Confirm merge. Go ahead and delete the branch, since its changes have been incorporated, with the Delete branch button in the purple box.
+1. [RStudio에서] 프로그램을 수정한 후 저장
+1. Git탭에서 변경된 파일의 `Staged` 체크박스 체크
+1. `Commit` 버튼 클릭
+1. `Review changes`창이 나타나면 commit message를 입력
+1. `Commit` 버튼 클릭 -> `Push` 버튼 클릭
+1. [Github으로 이동] 해당 repository 상단에 "Your recently pushed branches:" 메시지 확인
+1. Click on the button that says **Compare and pull request**.
+1. 제목과 내용 수정
+1. Click the green **Create pull request** button.
+1. "This branch has no conflicts with the base branch." 메시지 확인
+1. Click the green **Merge pull request** button.
+1. Click the green **Confirm merge** button.
+1. Click the **Delete branch** button in the purple box.
 
 
 ---

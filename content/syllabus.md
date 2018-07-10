@@ -1,8 +1,8 @@
 ---
-date: 2017-04-19
+date: 2018-07-10
 ---
 
-## Course Schedule
+## Big Data Analytics with R
 
 
 {{% syllabus %}}

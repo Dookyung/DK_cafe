@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="generator" content="Hugo 0.35" />
 
-  <title>Big Data Analytics with R</title>
+  <title>R Developers&#39; Programs</title>
 
   
   
@@ -42,7 +42,7 @@
 
  
   
-  <link rel="alternate" type="application/rss+xml" title="Big Data Analytics with R" href="./index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="R Developers&#39; Programs" href="./index.xml" />
   
 
   
@@ -79,31 +79,19 @@
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="./"><i class='fa fa-home fa-fw'></i>Blog</a>
+          <a class="pure-menu-link" href="./intro/"><i class='fa fa-home fa-fw'></i>Introduction</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="./schedule/"><i class='fa fa-calendar-check'></i>Schedule</a>
+          <a class="pure-menu-link" href="./syllabus/"><i class='fa fa-calendar-check'></i>BDA with R</a>
       
         </li>
       
       
         <li class="pure-menu-item">
-          <a class="pure-menu-link" href="./syllabus/"><i class='fa fa-calendar-check'></i>R4DS Course</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="./post/"><i class='fa fa-list fa-fw'></i>Posts</a>
-      
-        </li>
-      
-      
-        <li class="pure-menu-item">
-          <a class="pure-menu-link" href="https://dkkim.netlify.com/"><i class='fa fa-user fa-fw'></i>About</a>
+          <a class="pure-menu-link" href="https://dkkim.netlify.com/"><i class='fa fa-user fa-fw'></i>About me</a>
       
         </li>
       
@@ -197,7 +185,7 @@
 
   <div>
   <div class="small-print">
-    <small></small>
+    <small>&copy; 2018. All rights reserved.</small>
   </div>
   <div class="small-print">
     <small>Built with&nbsp;<a href="https://gohugo.io/" target="_blank">Hugo</a></small>
@@ -212,7 +200,7 @@
 
 
 <div class="header">
-  <h1>Big Data Analytics with R</h1>
+  <h1>R Developers&#39; Programs</h1>
   <h2>Dookyung Kim</h2>
 </div>
 
@@ -220,29 +208,19 @@
   
     <article>
   <header>
-    <h2><a href="./post/2018-06-06-r-package2/">R Package 만들기 2</a></h2>
+    <h2><a href="./post/2015-07-23-r-rmarkdown/">Course Initiated</a></h2>
 
     <div class="post-meta">
 
   <div>
     <i class="fa fa-calendar fa-fw"></i>
-    <time>Jun 07</time>
+    <time>Jul 10, 2018</time>
   </div>
 
   
 
   
 
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/devtools">devtools</a>
-    
-  </div>
-  
   
 
 </div>
@@ -250,323 +228,9 @@
   </header>
 
   <p>
-  R 패키지 구조 이해하기 library(devtools) R 패키지의 구조 이번 포스팅에서는 우리가 만들어 놓은 폴더와 파일들이 패키지에서 어떠한 역할을 하는지에 대하여 알아보자. 패키지가 깔려
+  이번 과정을 만드는 이유 Big Data Analytic with R 과정 개발을 시작합니다.
   </p>
 
-  
-  <footer>
-    <a href="./post/2018-06-06-r-package2/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2018-06-06-r-package3/">R Package 만들기 3</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>Jun 07</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/devtools">devtools</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Description 파일 설정 library(devtools) DESCRIPTION 파일 설정 Description 파일을 열어 내용을 보면 다음과 같다. Package: r4issactoast Type: Package Title: What the Package Does (Title Case) Version: 0.1.0 Author: Who wrote it Maintainer: The package maintainer &lt;yourself@somewhere.net&gt; Description: More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
-  </p>
-
-  
-  <footer>
-    <a href="./post/2018-06-06-r-package3/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2018-06-07-r-package4/">R Package 만들기 4</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>Jun 07</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/devtools">devtools</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  나만의 함수 추가하기 with roxygen2 library(devtools) library(roxygen2) 아래와 같은 감마분포의 MOME 함수를 패키지에 넣도록 하겠다. mom_gamma &lt;- function(sample_g){ x_bar &lt;- mean(sample_g) x2_bar &lt;- mean(sample_g^2) mom_theta &lt;- (x2_bar - x_bar^2) / x_bar mom_k &lt;- x_bar / mom_theta list(k_hat = mom_k, theta_hat = mom_theta) } 위의 코드
-  </p>
-
-  
-  <footer>
-    <a href="./post/2018-06-07-r-package4/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2018-06-07-r-package5/">R Package 만들기 5</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>Jun 07</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/devtools">devtools</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Import, Suggests, and README.Rmd에 대하여 오늘 배울 내용은 우리의 패키지를 만드는 과정에서 다른 패키지들에 존재하는 함수를 빌려서 사용하는 방법을 알아보자. mle_gamma() 함수
-  </p>
-
-  
-  <footer>
-    <a href="./post/2018-06-07-r-package5/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2018-06-07-r-package6/">R Package 만들기 5</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>Jun 07</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/devtools">devtools</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  설명서(Vignette)와 마크다운(markdown)에 대하여 Vignette이란 책의 타이틀 페이지나 요약본이라는 뜻으로, 패키지의 설명서를 의
-  </p>
-
-  
-  <footer>
-    <a href="./post/2018-06-07-r-package6/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2018-06-06-r-package/">R Package 만들기 1</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>Jun 06</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/devtools">devtools</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Creating My Own R Package 조직내에서 R을 체계적으로 활용하기 위해서는 R 스크립트의 재사용, 체계적 주석, 유지보수, 온라인 배포 등을 위해 R 패키지를 작성하여 배포하는 방식
-  </p>
-
-  
-  <footer>
-    <a href="./post/2018-06-06-r-package/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2018-04-29-database-sql/">Introduction</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>May 29</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/rsqlite">RSQLite</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="./tags/dbi">DBI</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  Introduction Data science is an exciting discipline that allows you to turn raw data into understanding, insight, and knowledge. The goal of “R for Data Science” is to help you learn the most important tools in R that will allow you to do data science. After reading this book, you’ll have the tools to tackle a wide variety of data science challenges, using the best parts of R.
-What you will learn Data science is a huge field, and there’s no way you can master it by reading a single book.
-  </p>
-
-  
-  <footer>
-    <a href="./post/2018-04-29-database-sql/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
-  
-</article>
-
-  
-    <article>
-  <header>
-    <h2><a href="./post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></h2>
-
-    <div class="post-meta">
-
-  <div>
-    <i class="fa fa-calendar fa-fw"></i>
-    <time>Jul 23</time>
-  </div>
-
-  
-
-  
-
-  
-  
-  
-  <div>
-    <i class="fa fa-tags fa-fw"></i>
-    
-      <a class="post-taxonomy-tag" href="./tags/r-markdown">R Markdown</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="./tags/plot">plot</a>&nbsp;&#47;
-    
-      <a class="post-taxonomy-tag" href="./tags/regression">regression</a>
-    
-  </div>
-  
-  
-
-</div>
-
-  </header>
-
-  <p>
-  R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.
-  </p>
-
-  
-  <footer>
-    <a href="./post/2015-07-23-r-rmarkdown/">Read more<i class="fa fa-angle-double-right fa-fw"></i></a>
-  </footer>
   
 </article>
 

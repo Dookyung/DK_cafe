@@ -41,10 +41,10 @@
     
     <item>
       <title>Course Schedule</title>
-      <link>/schedule/</link>
+      <link>/schedule1/</link>
       <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>/schedule/</guid>
+      <guid>/schedule1/</guid>
       <description>Date Time Lecture Notes Readings Day1 Session 1 Introduction Session 2 Basic R Session 3 Using github Session 4 Functional Programming Day2 Session 1 Data Structure &amp; Tidy Data Session 2 Data wrangling with dplyr Session 3 Web Scraping Session 4 Shiny and Rmarkdown Day3 Session 1 Parallelization Session 2 Database &amp; SQL Session 3 Bigish Data Day 4 Session 1 SparklyR Session 2 Real World Data Science Topics 소</description>
     </item>
     

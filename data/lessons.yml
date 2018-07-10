@@ -2,6 +2,7 @@ lessons:
   - date: "Day1"
     title: "Welcome to Data Science"
     slides: "lec-slides/00-welcome.html"
+    lab: "lab-01-hello-r.html"
   - title: "Logic in R"
     slides: "lec-slides/01-LogicR.html"
     reading: "reading-01.html" 

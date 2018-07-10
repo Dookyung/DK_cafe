@@ -6,10 +6,6 @@ description = "Program Introduction"
 +++
 
 
-# 
-
-<br>
-
 ## How to Learn
 
   * explore, groom, visualize, and analyze data
@@ -29,32 +25,18 @@ description = "Program Introduction"
 
 ## 본 과정의 구성
 
-  * Introduction to Basic R Programming
-  * New way of R programming - Tidyverse 
-  * Big Data Analytics with R
-  * Rmarkdown 
-  * Shiny
-  * How to make R Packages
-  * git and github with RStudio
-  * make
-
-<br>  
-    
-## Selected topics
-
   * Introduction to [R](http://www.r-project.org) and the [RStudio IDE](http://www.rstudio.com/products/rstudio/): scripts, the workspace, RStudio Projects, daily workflow
-  * Generate reports from R scripts and [R Markdown](http://rmarkdown.rstudio.com)
-  * Coding style, file and project organization
-  * Data frames or "tibbles" are the core data structure for data analysis: care for them with the tidyverse
-  * Data visualization with [`ggplot2`](http://ggplot2.org)
+  * Version control and Collaboration with Git and [GitHub](https://github.com) in RStudio
   * How to write functions and work with R in a functional style
-  * Version control with Git; collaboration via [GitHub](https://github.com)
-  * Be the boss of non-numeric data, esp. character and factor
+  * Data frames or "tibbles" are the core data structure for data analysis: care for them with the tidyverse
+  * Big Data Analytics with R
+  * Data visualization with [`ggplot2`](http://ggplot2.org)
   * Interactive pages, apps, and graphics with [Shiny](http://shiny.rstudio.com)
-  * Get data off the web and expose data, code, results on the web
   * Distribute data and code via an R package
+  * Generate reports from R scripts and [R Markdown](http://rmarkdown.rstudio.com)
   * Automate an analytical pipeline, e.g. via `Make`
-
+  * Get data off the web and expose data, code, results on the web
+  * Coding style, file and project organization
 
 <br>
   

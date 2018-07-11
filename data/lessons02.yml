@@ -1,0 +1,6 @@
+lessons:
+  - date: "Day1"
+    title: "Using github"
+    slides: "lec-slides/04-github.html"
+  - title: "Web Scraping"
+  - title: "Real World Data Science"

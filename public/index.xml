@@ -23,11 +23,29 @@
     
     <item>
       <title></title>
+      <link>/reference/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/reference/</guid>
+      <description> Reference and Tips Note: 간단히 정리NumberTitleNotesSlidesReadings1Useful Tips2Useful References </description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/syllabus/</link>
       <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
       <guid>/syllabus/</guid>
       <description> Big Data Analytics with R Note: Due dates of exams and project will not move, however the timeline of topics and smaller assignments might be updated throughout the semester.DateTitleNotesSlidesReadingsDay1Welcome to Data ScienceLogic in RIntroductionBasic RUsing githubFunctional ProgrammingDay2Data Structure &amp;amp; Tidy DataData wrangling with dplyrWeb ScrapingShiny and RmarkdownParallelizationDay3Database &amp;amp; SQLBigish DataSparklyRReal World Data Science </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/syllabus02/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/syllabus02/</guid>
+      <description> Data Science Tools Note: 간단히 정리DateTitleNotesSlidesReadingsDay1Using githubWeb ScrapingReal World Data Science </description>
     </item>
     
     <item>

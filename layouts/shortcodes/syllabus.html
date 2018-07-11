@@ -20,8 +20,8 @@
       <td>{{ .title }}</td>
 
 
-      {{ if .lab }}
-      <td style="text-align:center"><a href="{{ .Site.baseurl }}/labs/{{ .lab }}">
+      {{ if .note }}
+      <td style="text-align:center"><a href="{{ .Site.baseurl }}/note/{{ .note }}">
           <i class="far fa-file-alt fa-lg"></i></a></td>
       {{ else }}
         <td style="text-align:center"><font color="f1f1f1">

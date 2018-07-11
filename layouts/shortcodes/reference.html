@@ -1,0 +1,57 @@
+<b>Note:</b> 간단히 정리
+
+
+<br><br>
+
+<div class="schedule-tbl">
+<table>
+  <tr>
+    <th style="width:15%">Number</th>
+    <th style="width:45%">Title</th>
+    <th style="width:5%;">Notes</th>
+    <th style="width:5%;">Slides</th>
+    <th style="width:5%;">Readings</th>
+  </tr>
+
+  {{ range $.Site.Data.reference }}
+    {{range . }}
+    <tr>
+      <td align="right">{{ .number }}</td>
+      <td>{{ .title }}</td>
+
+
+      {{ if .note }}
+      <td style="text-align:center"><a href="{{ .Site.baseurl }}/note/{{ .note }}">
+          <i class="far fa-file-alt fa-lg"></i></a></td>
+      {{ else }}
+        <td style="text-align:center"><font color="f1f1f1">
+          <i class="far fa-file-alt fa-lg"></i></font></td>
+      {{ end }}
+
+
+
+
+      {{ if .slides }}
+      <td style="text-align:center"><a href="{{ .Site.baseurl }}/slides/{{ .slides  }}">
+          <i class="fa fa-laptop  fa-lg"></i></a></td>
+      {{ else }}
+        <td style="text-align:center"><font color="f1f1f1">
+          <i class="fa fa-laptop  fa-lg"></i></font></td>
+      {{ end }}
+
+      
+      {{ if .reading }}
+      <td style="text-align:center"><a href="{{ .Site.baseurl }}/reading/{{ .reading  }}">
+          <i class="fa fa-book fa-lg"></i></a></td>
+      {{ else }}
+        <td style="text-align:center"><font color="f1f1f1">
+          <i class="fa fa-book fa-lg"></i></font></td>
+      {{ end }}
+
+
+    </tr>
+    {{ end }}
+  {{ end }}
+
+</table>
+</div>

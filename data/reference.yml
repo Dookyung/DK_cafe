@@ -1,0 +1,7 @@
+lessons:
+  - number: "1"
+    title: "Useful Tips"
+    note: "ref-01-useful-tips.html"
+  - number: "2"
+    title: "Useful References"
+    note: "ref-02-useful-references.html"

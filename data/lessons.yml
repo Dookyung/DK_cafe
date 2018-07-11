@@ -6,7 +6,7 @@ lessons:
   - title: "Logic in R"
     slides: "lec-slides/01-LogicR.html"
     reading: "reading-01.html" 
-    note: "note-00-unvotes.html"
+    note: "note-03-logic_in_R.html"
   - title: "Introduction"
   - title: "Basic R"
   - title: "Using github"

@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+/* Tufte CSS styles */
+
+html {
+	font-size: 14px;
+}
+
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	background-color: #fefefe;
+	color: #222;
+	counter-reset: li;
+	line-height:1.5em;
+}
+
+
+h1.title {
+    font-weight: 700;
+    line-height: 2em;
+    color: #6CA0DC;
+}
+
+h2 {
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #6CA0DC;
+}
+
+
+h3 {
+    line-height: 1.5em;
+    color: #6CA0DC;
+}
+
+.big {
+  font-size: 200%;
+}
+
+.large { 
+  font-size: 130%;
+}
+
+.normal {
+  font-size: 100%;
+}
+
+.small {
+  font-size: 70%;
+}
+
+
+.split-50 .column {width: 49.5%; margin-right: 0.5%;}
+
+.column {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.column {float: left;}
+
+
+
+a, a > code {
+  color: #6CA0DC;
+  text-decoration: none;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+  padding-right: 4em;
+  font-size: 90%;
+}
+
+
+li{
+  margin: 10px 0;
+}
+
+
+img, video, iframe {
+  max-width: 80%;
+}
+
+
+blockquote {
+  border-left: solid 5px lightgray;
+  padding-left: 1em;
+}
+
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+
+thead{
+  font-size: 1.2em;
+  border-bottom: 1px solid #e7e7e7; 
+  text-align: left;
+  font-weight: bold;
+}
+
+tbody{
+  font-size: 1em;
+}
+
+th {
+  padding: 10px 30px;
+}
+
+td {
+  padding: 10px 20px 10px 40px;
+}
+
+tbody tr:nth-child(odd) { 
+  background: #f6f6f6 
+}

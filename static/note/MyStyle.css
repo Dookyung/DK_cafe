@@ -18,19 +18,20 @@ body {
 
 
 h1.title {
-    font-weight: 700;
-    line-height: 2em;
+    font-weight: 800;
+    line-height: 3em;
     color: #6CA0DC;
 }
 
 h2 {
-    font-weight: 300;
-    line-height: 1.5em;
+    font-weight: 600;
+    line-height: 2.5em;
     color: #6CA0DC;
 }
 
 
 h3 {
+    font-weight: 500;
     line-height: 1.5em;
     color: #6CA0DC;
 }
@@ -52,7 +53,7 @@ h3 {
 }
 
 
-.split-50 .column {width: 49.5%; margin-right: 0.5%;}
+.split-50 .column {width: 48%; margin-right: 2%;}
 
 .column {
   padding-top: 5px;

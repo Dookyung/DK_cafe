@@ -32,13 +32,6 @@ library(dplyr)
 
 `dplyr` package의 Data sets 결합(combining) 함수: 
 
-* `full_join` - preserving all rows in both `a` and `b`.
-* `inner_join` - preserving only rows with keys in both `a` and `b`.
-* `left_join` - preserving all rows of `a`
-* `right_join` - preserving all rows of `b`.
-* `semi_join` - Subset rows in `a` that have a match in `b`.
-* `anti_join` - Subset rows in `a` that do not have a match in `b`.
-
 ```{r echo=FALSE}
 knitr::include_graphics("img/04-database_sql/join_venn.png")
 ```
@@ -51,7 +44,7 @@ knitr::include_graphics("img/04-database_sql/join_venn.png")
 
 <div class = "split-50">
 <div class = "column">
-```{r echo=FALSE}
+```{r}
 addr = data.frame(
   name = c("Alice","Bob",
            "Carol","dave",
@@ -67,9 +60,8 @@ addr = data.frame(
 addr
 ```
 </div>
-
 <div class = "column">
-```{r echo=FALSE}
+```{r}
 phone = data.frame(
   name = c("Bob","Carol",
            "Eve","Eve",
@@ -85,7 +77,6 @@ phone = data.frame(
 phone
 ```
 </div>
-
 </div>
 
 <hr>
@@ -94,53 +85,73 @@ phone
 
 __Outer Join__
 
+<div class = "split-50">
+<div class = "column">
 dplyr:
 ```{r}
-full_join(addr, phone)
 full_join(addr, phone, by="name")
 ```
-
+</div>
+<div class = "column">
 Base R:
 ```{r}
 merge(addr, phone, all=TRUE)
 ```
-
+</div>
+</div>
 
 __Inner Join__
 
+<div class = "split-50">
+<div class = "column">
 dplyr:
 ```{r message=FALSE}
 inner_join(addr,phone)
 ```
-
+</div>
+<div class = "column">
 Base R:
 ```{r}
 merge(addr, phone, all=FALSE)
 ```
+</div>
+</div>
 
 __Left Join__
-
+<div class = "split-50">
+<div class = "column">
 dplyr:
 ```{r message=FALSE}
 left_join(addr,phone)
 ```
-
+</div>
+<div class = "column">
 Base R:
 ```{r}
 merge(addr, phone, all.x=TRUE)
 ```
+</div>
+</div>
 
 __Right Join__
+
+<div class = "split-50">
+<div class = "column">
 
 dplyr:
 ```{r message=FALSE}
 right_join(addr, phone)
 ```
 
+</div>
+<div class = "column">
+
 Base R:
 ```{r}
 merge(addr, phone, all.y=TRUE)
 ```
+</div>
+</div>
 
 ### Filtering Joins
 
@@ -155,30 +166,32 @@ __Anti Joins__
 ```{r message=FALSE}
 anti_join(addr, phone)
 ```
----
 
-### many-to-many relationships
 
-```{r echo=FALSE}
+
+<hr>
+
+### Many-to-many relationships
+
+<div class = "split-50">
+<div class = "column">
+```{r}
 addr_new = data.frame(name = c("Alice","Alice", "Bob","Bob"),
                   email= c("alice@company.com","alice@gmail.com", "bob@company.com","bob@hotmail.com"),
                   stringsAsFactors = FALSE)
-```
-
-```{r}
 addr_new
 ```
-
-```{r echo=FALSE}
+</div>
+<div class = "column">
+```{r}
 phone_new = data.frame(name = c("Alice","Alice", "Bob","Bob"),
                    phone= c("919 555-1111", "310 555-2222", "919 555-3333", "310 555-3333"),
                    stringsAsFactors = FALSE)
-```
 
-
-```{r}
 phone_new
 ```
+</div>
+</div>
 
 ```{r}
 full_join(addr, phone, by="name")
@@ -314,8 +327,6 @@ dbClearResult(res)
 ## [1] TRUE
 ```
 
----
-
 __Closing the connection__
 
 ```r
@@ -360,8 +371,6 @@ CREATE TABLE `employees` (
 sqlite> .indices employees
 ```
 
----
-
 ### SELECT Statements
 
 ```sqlite
@@ -374,8 +383,6 @@ Dave|dave@company.com|33000.0|Accounting
 Eve|eve@company.com|44000.0|Sales
 Frank|frank@comany.com|37000.0|Sales
 ```
-
----
 
 ### Pretty Output
 
@@ -399,8 +406,6 @@ Eve         eve@company.com    44000.0     Sales
 Frank       frank@comany.com   37000.0     Sales  
 ```
 
----
-
 ### select using SELECT
 
 We can subset for certain columns (and rename them) using `SELECT`
@@ -417,8 +422,6 @@ Dave        33000.0
 Eve         44000.0   
 Frank       37000.0  
 ```
-
----
 
 ### arrange using ORDER BY
 
@@ -437,8 +440,6 @@ Eve         44000.0
 Alice       52000.0  
 ```
 
----
-
 We can sort in the opposite order by adding `DESC` 
 
 ```sqlite
@@ -453,8 +454,6 @@ Frank       37000.0
 Dave        33000.0   
 Carol       30000.0  
 ```
-
----
 
 ### filter via WHERE
 
@@ -477,8 +476,6 @@ Carol       carol@company.com  30000.0     Sales
 Frank       frank@comany.com   37000.0     Sales 
 ```
 
----
-
 ### group_by via GROUP BY
 
 We can create groups for the purpose of summarizing using `GROUP BY`. As with dplyr it is not terribly useful by itself.
@@ -498,9 +495,6 @@ dept        mean_salary       n
 Accounting  41666.6666666667  3         
 Sales       37000.0           3   
 ```
-
-
----
 
 ### head via LIMIT
 
@@ -524,10 +518,6 @@ Eve         eve@company.com   44000.0     Sales
 Dave        dave@company.com  33000.0     Accounting
 ```
 
-
-
----
-
 ### Import CSV files
 
 ```sqlite
@@ -547,8 +537,6 @@ Carol       919 555-2222
 Eve         919 555-3333
 Frank       919 555-4444
 ```
-
----
 
 ### Joins - Default
 
@@ -585,9 +573,6 @@ Frank       frank@comany.com   37000.0     Sales       Eve         919 555-3333
 Frank       frank@comany.com   37000.0     Sales       Frank       919 555-4444
 ```
 
-
----
-
 ### Inner Join
 
 If you want SQLite to find the columns to merge on automatically then we prefix the join with `NATURAL`.
@@ -603,8 +588,6 @@ Eve         eve@company.com  44000.0     Sales       919 555-3333
 Frank       frank@comany.co  37000.0     Sales       919 555-4444
 ```
 
----
-
 ### Inner Join - Explicit
 
 ```sqlite
@@ -617,9 +600,6 @@ Carol       carol@company.c  30000.0     Sales       Carol       919 555-2222
 Eve         eve@company.com  44000.0     Sales       Eve         919 555-3333
 Frank       frank@comany.co  37000.0     Sales       Frank       919 555-4444
 ```
-
-
----
 
 ### Left Join - Natural
 
@@ -635,8 +615,6 @@ Dave        dave@company.com   33000.0     Accounting
 Eve         eve@company.com    44000.0     Sales       919 555-33
 Frank       frank@comany.com   37000.0     Sales       919 555-44
 ```
-
----
 
 ### Left Join - Explicit
 
@@ -654,14 +632,10 @@ Eve         eve@company.com    44000.0     Sales       Eve         919 555-33
 Frank       frank@comany.com   37000.0     Sales       Frank       919 555-44
 ```
 
----
-
 ### Other Joins
 
 Note that SQLite does not support directly support an `OUTER JOIN` or a `RIGHT JOIN`.
 
-
----
 
 ### Creating an index
 
@@ -677,8 +651,6 @@ sqlite> .indices
 index_name
 index_name_email
 ```
-
----
 
 ### Subqueries
 
@@ -703,8 +675,6 @@ Carol       carol@company.c  30000.0     Sales       919 555-2222
 Eve         eve@company.com  44000.0     Sales       919 555-3333
 Frank       frank@comany.co  37000.0     Sales       919 555-4444
 ```
-
----
 
 ### Excercise - Stupid SQL Tricks
 

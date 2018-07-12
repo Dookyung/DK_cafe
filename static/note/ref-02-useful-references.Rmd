@@ -13,3 +13,5 @@ knitr::opts_chunk$set(eval = FALSE)
 
 
 - [Duke, Sta323](http://www2.stat.duke.edu/~cr173/Sta323_Sp18/): Data Science Tools Course
+
+- [stat545](http://stat545.com/)

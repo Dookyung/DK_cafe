@@ -1,0 +1,488 @@
+---
+title: "Purrr03 - core"
+author: "Dookyung Kim"
+date: "2018-07-11"
+output: 
+    html_document:
+        css: note.css
+mainfont: NanumGothic
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE, collapse = TRUE, comment = "#>")
+```
+
+## Explore the example lists: Wes Anderson, Game of Thrones, GitHub
+
+
+### Load packages
+
+Load purrr and repurrrsive, which contains recursive list examples.
+
+```{r}
+library(purrr)
+library(repurrrsive)
+```
+
+List inspection is very important and also fairly miserable. Below I offer interactive widgets for our example lists. If you wish to do the same locally, install the [listviewer](https://CRAN.R-project.org/package=listviewer) package.
+
+```{r}
+# install.packages('listviewer')
+library(listviewer)
+```
+
+### Inspect and explore
+
+Before you can apply a function to every element of a list, you'd better understand the list!
+
+You need to develop a toolkit for list inspection. Be on the look out for:
+
+  * What is the length of the list?
+  * Are the components homogeneous, i.e. do they have the same overall structure, albeit containing different data?
+  * Note the length, names, and types of the constituent objects.
+
+
+#### `str()`
+
+`str()` can help with basic list inspection, although it's still rather frustrating. Learn to love the `max.level` and `list.len` arguments. You can use them to keep the output of `str()` down to a manageable volume.
+
+Once you begin to suspect or trust that your list is homogeneous, i.e. consists of sub-lists with similar structure, it's often a good idea to do an in-depth study of a single element. In general, remember you can combine list inspection via `str(..., list.len = x, max.level = y)` with single `[` and double `[[` square bracket indexing.
+
+The repurrrsive package provides examples of lists. We explore them below, to lay the groundwork for other lessons, and to demonstrate list inspection strategies.
+
+#### listviewer
+
+It's often more helpful to explore such lists with an interactive widget. If you installed the listviewer package, replicate this experience locally via `listviewer::jsonedit(got_chars, mode = "view")`.
+
+### Wes Anderson color palettes
+
+`wesanderson` is a simple list containing color palettes from the [wesanderson package](https://cran.r-project.org/package=wesanderson). Each component is a palette, named after a movie, and contains a character vector of colors as hexadecimal triplets.
+
+```{r}
+str(wesanderson)
+```
+
+#### listview `wesanderson`
+
+```{r echo = FALSE}
+jsonedit(wesanderson, mode = "view", elementId = "wesanderson")
+```
+
+### Game of Thrones POV characters
+
+`got_chars` is a list with information on the `r length(got_chars)` point-of-view characters from the first five books in the Song of Ice and Fire series by George R. R. Martin. Retrieved from [An API Of Ice And Fire](https://anapioficeandfire.com). Each component corresponds to one character and contains `r length(got_chars[[1]])` components which are named atomic vectors of various lengths and types.
+
+```{r}
+str(got_chars, list.len = 3)
+str(got_chars[[1]], list.len = 8)
+```
+
+#### listview `got_chars`
+
+```{r echo = FALSE}
+jsonedit(number_unnamed(got_chars), mode = "view", elementId = "got_chars")
+```
+
+### GitHub users and repositories
+
+`gh_users` is a list with information on 6 GitHub users. `gh_repos` is a nested list, also of length 6, where each component is another list with information on up to 30 of that user's repositories. Retrieved from the [GitHub API](https://developer.github.com/v3/).
+
+```{r}
+str(gh_users, max.level = 1)
+```
+
+#### listview `gh_users`
+
+```{r echo = FALSE}
+jsonedit(number_unnamed(gh_users), mode = "view", elementId = "gh_users")
+```
+
+#### listview `gh_repos`
+
+```{r echo = FALSE}
+jsonedit(number_unnamed(gh_repos), mode = "view", elementId = "gh_repos")
+```
+
+
+
+## Introduction to map(): extract elements
+
+### Load packages
+
+Load purrr and repurrrsive, which contains recursive list examples. listviewer provides the interactive list viewing widgets.
+
+```{r}
+library(purrr)
+library(repurrrsive)
+library(listviewer)
+```
+
+### Vectorized and "list-ized" operations
+
+This lesson picks up where [the primer on vectors and lists](https://jennybc.github.io/purrr-tutorial/bk00_vectors-and-lists.html#vectorized_operations) left off. 
+
+Many operations "just work" in a vectorized fashion in R:
+
+```{r}
+(3:5) ^ 2
+sqrt(c(9, 16, 25))
+```
+
+Someone -- but not you! -- has written a `for()` loop:
+
+```
+for (i in 1:n) {
+  output[[i]] <- f(input[[i]])
+}
+```
+
+Automatic vectorization is possible because our input is an atomic vector: always of length one, always of uniform type.
+
+What if the input is a list? 
+
+You have to be more intentional to apply a function `f()` to each element of a list, i.e. to "list-ize" computation. 
+
+`purrr::map()` is a function for applying a function to each element of a list.(see `lapply()` in base R). 
+
+
+```{r}
+map(c(9, 16, 25), sqrt)
+```
+
+A template for basic `map()` usage:
+
+```{r eval = FALSE}
+map(YOUR_LIST, YOUR_FUNCTION)
+```
+
+
+#### Name and position shortcuts
+
+We want the elements with name "name". purrr has a short cut to create a function that extracts an element based on its name.
+
+```{r}
+map(got_chars[1:4], "name")
+```
+
+A companion shortcut is used if you provide a positive integer to `map()`, based on element position.
+
+```{r}
+map(got_chars[5:8], 3)
+```
+
+To recap, here are two shortcuts for making the `.f` function that `map()` will apply:
+
+  * provide "TEXT" to extract the element named "TEXT"
+    - equivalent to `function(x) x[["TEXT"]]`
+  * provide `i` to extract the `i`-th element
+    - equivalent to `function(x) x[[i]]`
+
+You will frequently see `map()` used together with the pipe `%>%`. These calls produce the same result as the above.
+
+```{r eval = FALSE}
+got_chars %>% 
+  map("name")
+got_chars %>% 
+  map(3)
+```
+
+
+#### Type-specific map
+
+`map()` always returns a list. But in that case, you might prefer a simpler object: **an atomic vector**. Tt is best to use a type-specific variant of `map()`.
+
+This is more efficient than using `map()` to get a list and then simplifying the result in a second step. Also purrr will alert you to any problems, i.e. if one or more inputs has the wrong type or length. 
+
+
+variants of `map()`, with the target type conveyed by the name:
+    
+    * `map_chr()``map_lgl()`, `map_int()`, `map_dbl()`
+
+```{r}
+map_chr(got_chars[9:12], "name")
+map_chr(got_chars[13:16], 3)
+```
+
+  
+#### Extract multiple values
+
+What if you want to retrieve multiple elements? 
+
+```{r}
+got_chars[[3]][c("name", "culture", "gender", "born")]
+```
+
+We use single square bracket indexing and a character vector to index by name. 
+
+    * To paraphrase Chambers, ["everything that happens in R is a function call"](http://adv-r.had.co.nz/Functions.html#all-calls) and indexing with `[` is no exception.
+
+It feels (and maybe looks) weird, but we can map `[` just like any other function. Recall `map()` usage:
+
+```{r eval = FALSE}
+map(.x, .f, ...)
+```
+
+The function `.f` will be `[`. And we finally get to use `...`! This is where we pass the character vector of the names of our desired elements. We inspect the result for two characters.
+
+```{r}
+x <- map(got_chars, `[`, c("name", "culture", "gender", "born"))
+str(x[16:17])
+```
+
+Some people find this ugly and might prefer the `extract()` function from magrittr.
+
+```{r}
+library(magrittr)
+x <- map(got_chars, extract, c("name", "culture", "gender", "born"))
+str(x[18:19])
+```
+
+#### Data frame output
+
+How can we "stack up" these results row-wise, i.e. one row per user and variables for "name", "gender", etc.? 
+
+    * A data frame would be the perfect data structure for this. This is what `map_df()` is for.
+
+```{r}
+map_df(got_chars, extract, c("name", "culture", "gender", "id", "born", "alive"))
+```
+
+Notice how the variables have been automatically type converted. It's a beautiful thing. 
+
+When programming, it is safer to explicitly specify type and build your data frame the usual way.
+
+```{r}
+library(tibble)
+got_chars %>% {
+  tibble(
+       name = map_chr(., "name"),
+    culture = map_chr(., "culture"),
+     gender = map_chr(., "gender"),       
+         id = map_int(., "id"),
+       born = map_chr(., "born"),
+      alive = map_lgl(., "alive")
+  )
+}
+```
+
+
+
+## (Example)Simplifying data from a list of GitHub users
+
+
+### Load packages
+
+A great use of purrr's `map()` functions is to dig information out of a non-rectangular data structure(such as JSON or XML from an API) and create a neat data frame. 
+If you are lucky it's JSON, which is less aggravating, and readily converts to a list you can work with in R.
+
+Here we explore some lists obtained from the [GitHub API](https://developer.github.com/v3/). 
+
+```{r message = FALSE}
+library(repurrrsive)
+library(listviewer)
+library(jsonlite)
+library(dplyr)
+library(tibble)
+library(purrr)
+```
+
+### Get several GitHub users 
+
+The [repurrrsive package](https://github.com/jennybc/repurrrsive#readme) provides information on 6 GitHub users in an R list named `gh_users`.
+
+`gh_users` is *a recursive list*:
+
+  * one component for each of the 6 GitHub users
+  * each component is, in turn, a list with info on the user
+
+We have no clue what is in this list. 
+
+Use `str()` with arguments such as `max.level` and `list.len`. 
+```{r}
+str(gh_users, max.level = 1)
+str(gh_users[[1]], list.len = 6)
+```
+
+You can also use `listviewer::jsonedit()` to explore it interactively:
+
+```{r echo = FALSE}
+jsonedit(gh_users, mode = "view", elementId = "gh_users")
+```
+
+
+### Name and position shortcuts
+
+Who are these GitHub users? We want the element with name "login", so we do this:
+
+by name
+
+```{r}
+map(gh_users, "login")
+```
+
+by position
+
+```{r}
+map(gh_users, 18)
+```
+
+by pipe `%>%`
+
+```{r eval = FALSE}
+gh_users %>% 
+  map("login")
+gh_users %>% 
+  map(18)
+```
+
+### Type-specific map
+
+`map()` always returns a list. But you might prefer a simpler object: **an atomic vector**.
+
+there are other variants of `map()`, with the target type conveyed by the name:
+
+  * `map_chr()`, `map_lgl()`, `map_int()`, `map_dbl()`
+  
+```{r}
+map_chr(gh_users, "login")
+map_chr(gh_users, 18)
+```
+
+
+### Extract multiple values
+
+What if you want to retrieve multiple elements?
+
+```{r}
+gh_users[[3]][c("name", "login", "id", "location")]
+```
+
+The function `.f` will be `[`.
+
+```{r}
+x <- map(gh_users, `[`, c("login", "name", "id", "location"))
+str(x[1:2])
+```
+
+Using `extract()` function from magrittr.
+
+```{r}
+x <- map(gh_users, magrittr::extract, c("login", "name", "id", "location"))
+str(x[3:4])
+```
+
+### Data frame output
+
+How can we "stack up" these results row-wise, i.e. one row per user and variables for "login", "name", etc.? 
+
+This is what `map_df()` is for.
+
+```{r}
+map_df(gh_users, `[`, c("login", "name", "id", "location"))
+```
+
+safer, but more cumbersome way
+
+```{r}
+gh_users %>% {
+  tibble(
+       login = map_chr(., "login"),
+        name = map_chr(., "name"),
+          id = map_int(., "id"),
+    location = map_chr(., "location")
+  )
+}
+```
+
+### Vector input to extraction shortcuts
+
+Instead of providing a single name or position, we use a vector:
+
+  * the `j`-th element addresses the `j`-th level of the hierarchy
+  
+```{r}
+gh_repos %>%
+  map_chr(c(1, 3))
+## TO DO? I would prefer a character example :( but gh_repos is unnamed atm
+```
+
+### List inside a data frame
+
+Step 1: Put the `gh_repos` list into a data frame, along with identifying GitHub usernames. The care and feeding of lists inside a data frame -- "list-columns" -- is the subject of its own lesson (*yet to be written / linked*), so I ask you to simply accept that this can be done.
+
+We use the answer to the previous exercise to grab the 6 usernames and set them as the names on the `gh_repos` list. Then we use `tibble::enframe()` to convert this named vector into a tibble with the names as one variable and the vector as the other. This is a generally useful setup technique.
+
+```{r}
+(unames <- map_chr(gh_repos, c(1, 4, 1)))
+(udf <- gh_repos %>%
+    set_names(unames) %>% 
+    enframe("username", "gh_repos"))
+```
+
+Build confidence by doing something modest on the list-column of repos. This is your introduction to another powerful, general technique: `map()` inside `mutate()`. Note we are now bringing the data frame wrangling tools from dplyr and tidyr to bear.
+
+```{r}
+udf %>% 
+  mutate(n_repos = map_int(gh_repos, length))
+```
+
+This shows that we know how to operate on a list-column inside a tibble.
+
+Figure out how to do what we want for a single user, i.e. for a single element of `udf$gh_repos`. Walk before you run.
+
+How far to we need to drill to get a single repo? How do we create "one row's worth" of data for this repo? How do we do that for all repos for a single user?
+
+```{r}
+## one_user is a list of repos for one user
+one_user <- udf$gh_repos[[1]]
+## one_user[[1]] is a list of info for one repo
+one_repo <- one_user[[1]]
+str(one_repo, max.level = 1, list.len = 5)
+## a highly selective list of tibble-worthy info for one repo
+one_repo[c("name", "fork", "open_issues")]
+## make a data frame of that info for all a user's repos
+map_df(one_user, `[`, c("name", "fork", "open_issues"))
+## YYAAAASSSSSSS
+```
+
+Now we scale this up to all of our users. Yes, we use mutate to `map()` inside a `map()`.
+
+```{r}
+udf %>% 
+  mutate(repo_info = gh_repos %>%
+           map(. %>% map_df(`[`, c("name", "fork", "open_issues"))))
+```
+
+The user-specific tibbles about each user's repos are now sitting in the `repo_info`. How do we simplify this to a normal data frame that is free of list-columns? Remove the `gh_repos` variable, which has served its purpose and use `tidyr::unnest()`.
+
+```{r}
+(rdf <- udf %>% 
+   mutate(
+     repo_info = gh_repos %>%
+       map(. %>% map_df(`[`, c("name", "fork", "open_issues")))
+   ) %>% 
+   select(-gh_repos) %>% 
+   tidyr::unnest())
+```
+
+Let's do a little manipulation with dplyr to find some of the more interesting repos and get repos from each user in front of our eyeballs. I get rid of forks and show the 3 repos for each user that have the most open issues. (Remember we are only working with the first 30 repos for each user -- I had to remember my open issue situation is much more grim than this table suggests.)
+
+```{r}
+rdf %>% 
+  filter(!fork) %>% 
+  select(-fork) %>% 
+  group_by(username) %>%
+  arrange(username, desc(open_issues)) %>%
+  slice(1:3)
+```
+
+
+
+## Resources
+
+[stat545, purrr, list-columns, nested data frames ](http://stat545.com/cm103_list-inspection-mapping.html)
+
+[purrr tutorial](https://jennybc.github.io/purrr-tutorial/index.html)
+
+
+If you just wanted to solve this problem, you could let [`jsonlite`](https://github.com/jeroenooms/jsonlite) simplify the JSON for you. Other packages for list handling include [`listless`](https://bitbucket.org/graumannlabtools/listless), [`rlist`](https://renkun.me/rlist/).

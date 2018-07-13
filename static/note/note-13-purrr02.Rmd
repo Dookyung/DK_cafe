@@ -224,8 +224,6 @@ pmap_chr(df, paste)
 
 Consider a data frame, as opposed to a nested list. How do you split it into pieces, according to one or more factors, apply a function to the pieces, and combine the results?
 
-Create a tiny excerpt of the Gapminder dataset that contains a bit of data for Canada and Germany. Load dplyr, now that we are more in the data frame world.
-
 ```{r message = FALSE}
 library(dplyr)
 library(gapminder)
@@ -233,8 +231,6 @@ library(gapminder)
     filter(country %in% c("Canada", "Germany"), year > 2000) %>% 
     droplevels())
 ```
-
-Simple summary of a single variable for each country. Specifically, take the mean of life expectancy. In this case, the formula method of base `aggregate()` is quite nice, i.e. it returns a convenient data frame.
 
 <div class = "row">
 <div class = "col-md-6">
@@ -310,7 +306,6 @@ gapminder %>%
 </div>
 </div>
 
-This is a good place to pause and glance back over the base vs tidyverse calls and results in this section. It shows that you can absolutely do these tasks either way, but the consistency of the code and return values is higher in the tidyverse.
 
 ## `by()` vs. `tidyr::nest()`
 
@@ -331,6 +326,7 @@ by_obj[[1]]
 **tidyverse**
 ```{r}
 library(tidyr)
+library(purrr)
 nested_df <- gapminder %>% 
   group_by(country, continent) %>% 
   nest() %>% 
@@ -341,7 +337,7 @@ nested_df$fit[[1]]
 </div>
 </div>
 
-What if you want to inspect the fits for Oceania? On the base side, you've got some work to do because the country information lives only in the names and the continent information is not directly linked to the model fits at all. On the tidyverse side, where the fits live in a data frame that carries country and continent info, we can use our usual techniques for filtering rows based on the data.
+What if you want to inspect the fits for Oceania? 
 
 <div class = "row">
 <div class = "col-md-6">
@@ -361,8 +357,7 @@ nested_df %>%
 </div>
 </div>
 
-Let's form a data frame with one row per country and variables for country, continent, estimated intercept, and estimated slope. I also want to guarantee that the country and continent factors have the same levels as they originally had in gapminder.
-
+Let's form a data frame with one row per country and variables for country, continent, estimated intercept, and estimated slope. 
 <div class = "row">
 <div class = "col-md-6">
 **base**
@@ -390,23 +385,6 @@ nested_df %>%
 ```
 </div>
 </div>
-
-This illustrates the post-processing that is often necessary in a base workflow. We need to restore the country info from the names of `by_obj`, use them to look up the continents in gapminder, and then restore the original factor levels for both country and continent. It illustrates the payoff for temporarily tolerating the `data` and `fit` list-columns in the nested data frame used in the tidyverse workflow. The country and continent factors remain intact and directly associated with the data and fits.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

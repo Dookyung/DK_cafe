@@ -35,3 +35,15 @@ paste0("* ", fig_files, " ![]](", fig_files, ")\n")
 `�``
 
 
+
+## file download
+
+```{r include = FALSE}
+
+if (!file.exists("data/trump_tweets_df.rda")) {
+  download.file("http://varianceexplained.org/files/trump_tweets_df.rda",
+                "trump_tweets_df.rda")
+}
+```
+
+

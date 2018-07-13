@@ -10,6 +10,7 @@ canonifyurls = true
 paginate = 5
 hasCJKLanguage = true
 
+publishDir = "docs"
 
 ##[indexes]
 ##  tag = "tags"

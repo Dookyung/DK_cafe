@@ -62,8 +62,8 @@ publishDir = "docs"
     name = "DS Tools"
     pre = "<i class='fa fa-calendar-check'></i>"
     weight = 3
-    identifier = "syllabus02"
-    url = "/syllabus02/"
+    identifier = "topics"
+    url = "/topics/"
     
     
   [[menu.main]]

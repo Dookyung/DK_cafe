@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 10 Jul 2018 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jul 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Course Initiated</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Tue, 10 Jul 2018 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>이번 과정을 만드는 이유 Big Data Analytic with R 과정 개발을 시작합니다.</description>
-    </item>
     
     <item>
       <title></title>
@@ -41,20 +32,11 @@
     
     <item>
       <title></title>
-      <link>/syllabus02/</link>
+      <link>/topics/</link>
       <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
       
-      <guid>/syllabus02/</guid>
+      <guid>/topics/</guid>
       <description> Data Science Tools Note: 간단히 정리DateTitleNotesSlidesReadingsDay1Using githubWeb ScrapingReal World Data Science </description>
-    </item>
-    
-    <item>
-      <title>Academy for R Developers</title>
-      <link>/intro/</link>
-      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/intro/</guid>
-      <description>How to Learn explore, groom, visualize, and analyze data make all of that reproducible, reusable, and shareable using R 본 과정의 목표: R을 통계프로그램이 아니라 재현가능 연구(Reproducible Research) 및 업무자동화를 위한 개발툴</description>
     </item>
     
     <item>

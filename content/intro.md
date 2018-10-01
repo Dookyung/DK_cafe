@@ -1,34 +1,37 @@
 +++
-title = "Academy for R Developers"
-date = "2018-07-10"
+title = "Data Science Hub for R Developers"
+date = "2018-10-02"
 sidemenu = "true"
-description = "Program Introduction"
+description = "Site Introduction"
 +++
 
 
-## How to Learn
-
-  * explore, groom, visualize, and analyze data
-  * make all of that reproducible, reusable, and shareable
-  * using R
-
 <br>
 
-## 본 과정의 목표:
+## Purpose of this site:
 
--  R을 통계프로그램이 아니라 재현가능 연구(Reproducible Research) 및 업무자동화를 위한 개발툴로 활용하며, rmarkdown, shiny 등을 활용한 리포팅, 인터렉티브한 대시보드, PDF, PPT, Blog, book 등의 시각화 자료를 자유롭게 창출하는 R 개발자를 양성
+-  R을 통계프로그램이 아니라 재현가능 연구(Reproducible Research) 및 업무자동화를 위한 개발툴로 활용하며, rmarkdown, shiny 등을 활용한 리포팅, 인터렉티브한 대시보드, PDF, PPT, Blog, book 등의 시각화 자료를 자유롭게 창출할 수 있는 능력 배양
 
 -  최근 RStudio사를 중심으로 발전하고 있는 Tidyverse 기반의 새로운 R 프로그래밍 방식, ggplot2를 활용한 고품질의 그래프 작성, sparklyr을 중심으로 한 빅데이터 분석 등 데이터분석가(Data Scientist)에게 꼭 필요한 기본적인 프로그래밍 능력을 배양
 
-- Data wrangling, exploration, and analysis with R
 <br>
 
-## 본 과정의 구성
+## Composition of this site
 
-  * Introduction to [R](http://www.r-project.org) and the [RStudio IDE](http://www.rstudio.com/products/rstudio/): scripts, the workspace, RStudio Projects, daily workflow
+  * Data Science with R (Course)
+  * Data Science Topics (Topic Discussion)
+  * Reference and Tips
+  * About Author
+
+
+## Composition of DS with R (TO BE CHANGED)
+
+  * Introduction to [R](http://www.r-project.org) and the [RStudio IDE](http://www.rstudio.com/products/rstudio/)
+      - scripts, the workspace, RStudio Projects, daily workflow
   * Version control and Collaboration with Git and [GitHub](https://github.com) in RStudio
   * How to write functions and work with R in a functional style
-  * Data frames or "tibbles" are the core data structure for data analysis: care for them with the tidyverse
+  * Data frames or "tibbles" are the core data structure for data analysis: 
+      - care for them with the tidyverse
   * Big Data Analytics with R
   * Data visualization with [`ggplot2`](http://ggplot2.org)
   * Interactive pages, apps, and graphics with [Shiny](http://shiny.rstudio.com)
@@ -40,23 +43,23 @@ description = "Program Introduction"
 
 <br>
   
-## 추천 자료
+## Reference
 
-본 과정에서 다루는 내용은 다음의 책과 사이트에서 보다 자세한 내용을 제공하고 있으므로 참고하기 바란다. 
+  * [R for Data Science - Grolemund, Wickham - O'Reilly, 2016](http://r4ds.had.co.nz/)
+  * [Advanced R - Wickham - Chapman and Hall/CRC, 2014](http://adv-r.had.co.nz/)
+  * [R Packages - Wickham - O'Reilly, 2015](http://r-pkgs.had.co.nz/)
 
-  -  Advanced R - Wickham - Chapman and Hall/CRC, 2014
-  -  R Packages - Wickham - O'Reilly, 2015
-  -  R for Data Science - Grolemund, Wickham - O'Reilly, 2016
-  -  Stat545.com
+    
+  * [Stat545.com](http://stat545.com/)
 
 <br>
 
 ## Recommended Software
 
   * R / RStudio
-  * git    
-  * make
-  * shell
+  * Python
+  * Excel and VBA
+  * git, make, shell
   
 <br>
 
@@ -66,6 +69,6 @@ Dookyung Kim, dookyung.kim74\@gmail.com
 
 <br>
 
-## 동 사이트의 개발툴
+## Developing Tool of this site
 
-동 사이트는 RStudio IDE에서 Blogdown과 Hugo(Blackburn Thema)를 활용하여 제작하였다. 
+This site is developed with RStudio IDE using Blogdown and Hugo (Blackburn Thema). 

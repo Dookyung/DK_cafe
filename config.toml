@@ -1,13 +1,13 @@
 baseurl = "/"
 relativeurls = true
 languageCode = "en-us"
-title = "R Developers' Programs"
+title = "Data Science Hub for R developers"
 theme = "blackburn"
 author = "Dookyung Kim"
 copyright = "&copy; 2018. All rights reserved."
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 canonifyurls = true
-paginate = 5
+paginate = 10
 hasCJKLanguage = true
 
 publishDir = "docs"
@@ -52,7 +52,7 @@ publishDir = "docs"
 #    url = "/schedule/"
 
   [[menu.main]]
-    name = "Course01"
+    name = "Fundamental Data Science with R"
     pre = "<i class='fa fa-calendar-check'></i>"
     weight = 2
     identifier = "syllabus"

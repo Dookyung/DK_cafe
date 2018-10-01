@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on R Developers&#39; Programs</title>
+    <title>Tags on Data Science Hub for R developers</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on R Developers&#39; Programs</description>
+    <description>Recent content in Tags on Data Science Hub for R developers</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018. All rights reserved.</copyright>

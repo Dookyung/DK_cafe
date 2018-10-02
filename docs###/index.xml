@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Science Hub for R developers</title>
+    <link>/</link>
+    <description>Recent content on Data Science Hub for R developers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 10 Jul 2018 21:13:14 -0500</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Course Initiated</title>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <pubDate>Tue, 10 Jul 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <description>이번 과정을 만드는 이유 Big Data Analytic with R 과정 개발을 시작합니다.</description>
+    </item>
+    
+    <item>
+      <title>Data Science Hub opened</title>
+      <link>/post/2018-10-02-greetings/</link>
+      <pubDate>Tue, 10 Jul 2018 21:13:14 -0500</pubDate>
+      
+      <guid>/post/2018-10-02-greetings/</guid>
+      <description>Data Science Hub is finally openedI start to develop the course titled “Data Science with R”. At this moment, this is mainly for the Bank of Korea(BOK) staff who are interested in Data Science. However, in the future, I will open this course to the public.
+Dookyung Kim
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/reference/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/reference/</guid>
+      <description> Reference and Tips Note: NumberTitleNotesSlidesReadings1Useful Tips2Useful References </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/syllabus/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/syllabus/</guid>
+      <description> Big Data Analytics with R Note: DateTitleNotesSlidesReadingsDay1Welcome to Data ScienceLogic in RIntroductionBasic RUsing githubFunctional ProgrammingDay2Data Structure &amp;amp; Tidy DataData wrangling with dplyrWeb ScrapingShiny and RmarkdownParallelizationDay3Database &amp;amp; SQLBigish DataSparklyRReal World Data Science </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/topics/</link>
+      <pubDate>Tue, 10 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/topics/</guid>
+      <description> Data Science Tools Note: 간단히 정리DateTitleNotesSlidesReadingsDay1Using githubWeb ScrapingReal World Data Science </description>
+    </item>
+    
+    <item>
+      <title>Course Schedule</title>
+      <link>/schedule1/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/schedule1/</guid>
+      <description>Date Time Lecture Notes Readings Day1 Session 1 Introduction Session 2 Basic R Session 3 Using github Session 4 Functional Programming Day2 Session 1 Data Structure &amp; Tidy Data Session 2 Data wrangling with dplyr Session 3 Web Scraping Session 4 Shiny and Rmarkdown Day3 Session 1 Parallelization Session 2 Database &amp; SQL Session 3 Bigish Data Day 4 Session 1 SparklyR Session 2 Real World Data Science Topics 소</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description> First Name  Last Name  E-Mail  City  State AL CA IL      Send   </description>
+    </item>
+    
+  </channel>
+</rss>

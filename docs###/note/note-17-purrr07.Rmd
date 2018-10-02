@@ -1,0 +1,348 @@
+---
+title: "Purrr07 - List Columns "
+author: "Dookyung Kim"
+date: "2018-07-13"
+output: 
+    html_document:
+        css: note.css
+mainfont: NanumGothic
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE, collapse = TRUE, comment = "#>")
+```
+
+## List columns
+
+Data frame are not limited to atomic vectors. They can host general vectors, i.e. *lists* as well. This is what I call a **list-column**.
+
+To work comfortably with list-columns, you need to develop techniques to:
+
+  * **Inspect**. What have I created?
+  * **Index**. How do I pull out specific bits by name or position?
+  * **Compute**. How do I operate on my list-column to make another vector or list-column?
+  * **Simplify**. How do I get rid of this list-column and back to a normal data frame?
+ 
+
+### Regex and Trump tweets
+
+#### Load packages
+
+```{r message = FALSE}
+library(tidyverse)
+library(stringr)
+library(lubridate)
+library(here) ## devtools::install_github("r-lib/here")
+```
+
+#### Bring tweets in
+
+Working with the same 7 tweets as [Trump Android words](ls08_trump-tweets.html) lesson. Go there for the rationale for choosing these 7 tweets.
+
+```{r}
+tb_raw <- read_csv(here("static","note","data", "trump-tweets.csv"))
+```
+
+#### Create a list-column of Trump Android words
+
+Clean a variable and create a list-column:
+
+  * `source` comes in an unfriendly form. Simplify to convey if tweet came from Android or iPhone.
+  * `twords` are what we'll call the "Trump Android words". See [Trump Android words](ls08_trump-tweets.html) lesson for backstory. **This is a list-column!**
+
+```{r}
+source_regex <- "android|iphone"
+tword_regex <- "badly|crazy|weak|spent|strong|dumb|joke|guns|funny|dead"
+
+tb <- tb_raw %>%
+  mutate(source = str_extract(source, source_regex),
+         twords = str_extract_all(tweet, tword_regex))
+```
+
+#### Derive new variables
+
+Add variables, two of which are based on the `twords` list-column.
+
+ * `n`: How many twords are in the tweet?
+ * `hour`: At which hour of the day was the tweet?
+ * `start`: Start character of each tword.
+ 
+```{r}
+tb <- tb %>%
+  mutate(n = lengths(twords),
+         hour = hour(created),
+         start = gregexpr(tword_regex, tweet))
+```
+
+```{r include = FALSE}
+# another possibilty that would require more processing
+# so less useful for a talk example
+# but more useful IRL:
+# str_locate_all(tweet, tword_regex))
+```
+
+#### Use regular data manipulation toolkit
+
+Let's isolate tweets created before 2pm, containing 1 or 2 twords, in which there's an tword that starts within the first 30 characters.
+
+```{r}
+tb %>%
+  filter(hour < 14,
+         between(n, 1, 2),
+         between(map_int(start, min), 0, 30))
+```
+
+Let's isolate tweets that contain both the twords "strong" and "weak".
+
+```{r}
+tb %>%
+  filter(map_lgl(twords, ~ all(c("strong", "weak") %in% .x)))
+```
+
+### JSON from an API and Game of Thrones
+
+#### Load packages
+
+```{r}
+library(repurrrsive)
+library(tidyverse)
+library(httr)
+library(stringr)
+library(here)
+```
+
+#### Call the API of Ice and Fire
+
+Here's a simplified version of how we obtained the data on the Game of Thrones POV characters. This data appears as a more processed list in the [repurrrsive](https://github.com/jennybc/repurrrsive#readme) package.
+
+  * Get character IDs from repurrrsive. *cheating a little, humor me*
+  * Put IDs and character names in a tibble.
+
+```{r}
+pov <- set_names(map_int(got_chars, "id"),
+                 map_chr(got_chars, "name"))
+tail(pov, 5)
+ice <- pov %>%
+  enframe(value = "id")
+ice
+```
+
+Request info for each character and store what comes back -- whatever that may be -- in the list-column `stuff`.
+
+```{r}
+ice_and_fire_url <- "https://anapioficeandfire.com/"
+if (file.exists(here("static","note","data", "ice.rds"))) {
+  ice <- readRDS(here("static","note","data", "ice.rds"))
+} else {
+  ice <- ice %>%
+    mutate(
+      response = map(id,
+                     ~ GET(ice_and_fire_url,
+                           path = c("api", "characters", .x))),
+      stuff = map(response, ~ content(.x, as = "parsed",
+                                      simplifyVector = TRUE))
+    ) %>%
+    select(-id, -response)
+  saveRDS(ice, here("static","note","data", "ice.rds"))
+}
+ice
+```
+
+Let's switch to a nicer version of `ice`, based on the list in repurrrsive, because it already has books and houses replaced with names instead of URLs.
+
+```{r}
+ice2 <- tibble(
+  name = map_chr(got_chars, "name"),
+  stuff = got_chars
+)
+ice2
+```
+
+Inspect the list-column.
+```{r}
+str(ice2$stuff[[9]], max.level = 1)
+# if (interactive()) {
+#   listviewer::jsonedit(ice2$stuff[[2]], mode = "view", width = 500, height = 530)
+# }
+```
+
+### Use regular data manipulation toolkit
+
+Form a sentence of the form "NAME was born AT THIS TIME, IN THIS PLACE" by digging info out of the `stuff` list-column and placing into a string template. No list-columns left!
+
+```{r}
+template <- "${name} was born ${born}."
+birth_announcements <- ice2 %>%
+  mutate(birth = map_chr(stuff, str_interp, string = template)) %>%
+  select(-stuff)
+birth_announcements
+```
+
+Extract each character's house allegiances. Keep only those with more than one allegiance. Then unnest to explode the `houses` list-column and get a tibble with one row per character * house combination. No list-columns left!
+
+```{r}
+allegiances <- ice2 %>%
+  transmute(name,
+            houses = map(stuff, "allegiances")) %>%
+  filter(lengths(houses) > 1) %>%
+  unnest()
+allegiances
+```
+
+### Aliases and allegiances of Game of Thrones characters
+
+#### Load packages
+
+```{r}
+library(tidyverse)
+library(repurrrsive)
+library(stringr)
+```
+
+#### Lists as variables in a data frame
+
+One row per GoT character. List columns for aliases and allegiances.
+
+```{r}
+x <- tibble(
+  name = got_chars %>% map_chr("name"),
+  aliases = got_chars %>% map("aliases"),
+  allegiances = got_chars %>% map("allegiances")
+)
+x
+#View(x)
+```
+
+What if we only care about characters with a "Lannister" alliance? Practice operating on a list-column.
+
+```{r}
+x %>%
+  mutate(lannister = map(allegiances, str_detect, pattern = "Lannister"),
+         lannister = map_lgl(lannister, any))
+```
+
+Keep only the Lannisters and Starks allegiances. You can use `filter()` with list-columns, but you will need to `map()` to list-ize your operation. Once I've got the characters I want, I drop `allegiances` and use `unnest()` to get back to a simple data frame with no list columns.
+
+```{r}
+x %>%
+  filter(allegiances %>%
+           map(str_detect, "Lannister|Stark") %>%
+           map_lgl(any)) %>%
+  select(-allegiances) %>%
+  filter(lengths(aliases) > 0) %>%
+  unnest() %>% 
+  print(n = Inf)
+```
+
+```{r eval = FALSE, include = FALSE}
+x_base <- data.frame(
+  name = vapply(got_chars, `[[`, character(1), "name"),
+  aliases = I(lapply(got_chars, `[[`, "aliases")),
+  allegiances = I(lapply(got_chars, `[[`, "allegiances"))
+)
+keep1 <- vapply(x_base$allegiances, function(y) any(grepl("Lannister|Stark", y)), logical(1))
+x_base <- x_base[keep1, ]
+x_base$allegiances <- NULL
+x_base
+data.frame(
+  name = rep(x_base$name, lengths(x_base$aliases)),
+  aliases = unlist(x_base$aliases)
+)
+```
+
+### Nested data frame, modelling, and Gapminder
+
+Another version of this same example is here:
+
+<http://r4ds.had.co.nz/many-models.html>
+
+*mostly code at this point, more words needed*
+
+#### Load packages
+
+```{r}
+library(tidyverse)
+library(gapminder)
+library(broom)
+```
+
+### Hello, again, Gapminder
+
+```{r}
+gapminder %>% 
+  ggplot(aes(year, lifeExp, group = country)) +
+    geom_line(alpha = 1/3)
+```
+
+What if we fit a line to each country?
+
+```{r}
+gapminder %>%
+  ggplot(aes(year, lifeExp, group = country)) +
+  geom_line(stat = "smooth", method = "lm",
+            alpha = 1/3, se = FALSE, colour = "black")
+```
+
+What if you actually want those fits? To access estimates, p-values, etc. In that case, you need to fit them yourself. How to do that?
+
+  * Put the variables needed for country-specific models into nested dataframe. In a **list-column**!
+  * Use the usual "map inside mutate", possibly with the broom package, to pull interesting information out of the 142 fitted linear models.
+  
+#### Nested data frame
+  
+Nest the data frames, i.e. get one meta-row per country:
+
+```{r}
+gap_nested <- gapminder %>%
+  group_by(country) %>%
+  nest()
+gap_nested
+gap_nested$data[[1]]
+```
+
+*Compare/contrast to a data frame grouped by country (dplyr-style) or split on country (base)*.
+
+#### Fit models, extract results
+
+Fit a model for each country.
+
+```{r}
+gap_fits <- gap_nested %>%
+  mutate(fit = map(data, ~ lm(lifeExp ~ year, data = .x)))
+```
+
+Look at one fitted model, for concreteness.
+
+```{r}
+gap_fits %>% tail(3)
+canada <- which(gap_fits$country == "Canada")
+summary(gap_fits$fit[[canada]])
+```
+
+Let's get all the r-squared values!
+
+```{r}
+gap_fits %>%
+  mutate(rsq = map_dbl(fit, ~ summary(.x)[["r.squared"]])) %>%
+  arrange(rsq)
+```
+
+Let's use a function from broom to get the usual coefficient table from `summary.lm()` but in a friendlier form for downstream work.
+
+```{r}
+library(broom)
+gap_fits %>%
+  mutate(coef = map(fit, tidy)) %>%
+  unnest(coef)
+```
+
+
+
+
+
+## Resources
+
+[stat545, purrr, list-columns, nested data frames ](http://stat545.com/cm103_list-inspection-mapping.html)
+
+[purrr tutorial](https://jennybc.github.io/purrr-tutorial/index.html)
+

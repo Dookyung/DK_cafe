@@ -6,8 +6,6 @@ description = "Site Introduction"
 +++
 
 
-<br>
-
 ## Purpose of this site:
 
 -  R을 통계프로그램이 아니라 재현가능 연구(Reproducible Research) 및 업무자동화를 위한 개발툴로 활용하며, rmarkdown, shiny 등을 활용한 리포팅, 인터렉티브한 대시보드, PDF, PPT, Blog, book 등의 시각화 자료를 자유롭게 창출할 수 있는 능력 배양

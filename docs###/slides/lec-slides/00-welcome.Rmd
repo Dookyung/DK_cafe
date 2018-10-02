@@ -1,0 +1,108 @@
+---
+title: "Introduction"
+author: "Dookyung Kim"
+date: "2018-05-06"
+output:
+  xaringan::moon_reader:
+    css: "slides.css"
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+exclude: true
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1
+  )
+# Set dpi and height for images
+library(knitr)
+opts_chunk$set(fig.height = 2.65, dpi = 300) 
+# ggplot2 color palette with gray
+color_palette <- list(gray = "#999999", 
+                      salmon = "#E69F00", 
+                      lightblue = "#56B4E9", 
+                      green = "#009E73", 
+                      yellow = "#F0E442", 
+                      darkblue = "#0072B2", 
+                      red = "#D55E00", 
+                      purple = "#CC79A7")
+# For nonsese...
+# library(emo)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(rvest)
+```
+
+---
+
+class: center, middle
+
+# Hello world!
+
+---
+
+class: .big
+
+## What is data science?
+
+
+--
+- <i class="fa fa-database fa-10x"></i> + <i class="fa fa-flask fa-10x"></i> = data science?
+
+--
+
+- <i class="fa fa-database fa-10x"></i> + <i class="fa fa-code fa-10x"></i> = data science?
+
+--
+
+- <i class="fa fa-database fa-10x"></i> + <i class="fa fa-user fa-10x"></i> + <i class="fa fa-code fa-10x"></i> = data science?
+
+--
+
+- <i class="fa fa-database fa-10x"></i> + <i class="fa fa-users fa-10x"></i> + <i class="fa fa-code fa-10x"></i> = data science?
+
+--
+
+<br>
+
+원시데이터(raw data)부터 세상의 현상이나 이치 대한 이해(understanding), 통찰(insight), 지식(knowledge)을 도출하는 학문
+
+R을 활용하여 보다 tidy way한 방식으로... 
+
+---
+# What is this course?
+
+Everything you will need for the course will be posted at
+
+[dkkim-r4ds.netlify.com/](https://dkkim-r4ds.netlify.com/)
+
+--
+
+- Will we be doing computing? Yes.
+
+--
+
+- Is this an intro CS course? No, but many themes are shared.
+
+--
+
+- Is this an intro stat course? Yes, but it's not your high school statistics course.
+
+--
+
+- What computing language will we learn? R.
+
+--
+
+- Why not language X? We can discuss that over <i class="fa fa-coffee"></i> .
+

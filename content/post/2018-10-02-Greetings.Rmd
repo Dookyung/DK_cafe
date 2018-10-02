@@ -1,0 +1,17 @@
+---
+title: "Data Science Hub opened"
+author: "Dookyung Kim"
+date: 2018-07-10T21:13:14-05:00
+#categories: ["R"]
+#tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+# Data Science Hub is finally opened
+
+I start to develop the course titled "Data Science with R". At this moment, this is mainly for the Bank of Korea(BOK) staff who are interested in Data Science. However, in the future, I will open this course to the public.
+
+Dookyung Kim

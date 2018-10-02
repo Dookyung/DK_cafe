@@ -69,7 +69,7 @@ publishDir = "docs"
   [[menu.main]]
     name = "Refs and Tips"
     pre = "<i class='fa fa-calendar-check'></i>"
-    weight = 8
+    weight = 4
     identifier = "reference"
     url = "/reference/"
     
@@ -82,9 +82,10 @@ publishDir = "docs"
   [[menu.main]]
     name = "About me"
     pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 9
+    weight = 5
     identifier = "about"
     url = "https://dkkim.netlify.com/"
+
 ##  [[menu.main]]
 ##    name = "Contact"
 ##    pre = "<i class='fa fa-phone fa-fw'></i>"

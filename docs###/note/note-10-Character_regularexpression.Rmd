@@ -1,0 +1,451 @@
+---
+title: "Regular expressions and character data"
+author: "Dookyung Kim"
+date: "2018-07-11"
+output: 
+    html_document:
+        css: note.css
+mainfont: NanumGothic
+---
+
+```{r setup, include = FALSE, cache = FALSE}
+knitr::opts_chunk$set(error = TRUE, collapse = TRUE, comment = "#>")
+```
+
+## R for text
+
+character strings:
+
+```{r}
+my_string <- "This is a nice little string! Isn't it?"
+my_string2 <- 'This little string contains "apices". What is the word for them?'
+my_string3 <- "Also this string contains a ' character."
+```
+
+they are a tad different:
+
+```{r}
+my_string4 <- `my_string`
+my_string5 <- 'my_string'
+
+my_string4
+my_string5
+```
+
+Finally, we can have vectors of strings.
+
+```{r}
+#devtools::install_github("JoeyBernhardt/singer")
+library(singer)
+places <- unique(singer_locations$city)
+```
+
+
+### The tools of the trade
+
+There are a bunch of libraries which makes life much easier. 
+
+    * `stringr` and `glue` in the tidyverse world
+    
+    * `stringi` is the core of `stringr`. I don't use it often: `stringr` does everything I need.
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(glue)
+```
+
+__Gluing is caring__
+
+The function `glue()` allows to compose strings in a programmatic and elegant way. 
+
+    * mere convenient than `paste()` or `paste0()`
+
+    * `glue()` knows the environment in which you call it. 
+    
+```{r}
+My_name <- "Giulio"
+My_age <- 32
+My_twitter <- "ipnosimmia"
+glue('My name is {My_name},',
+  ' my age next year is {My_age + 1},',
+  ' my twitter handle is @{My_twitter}.')
+```
+
+    * It also preserves indentation and new lines (but you have to start from the beginning):
+
+```{r}
+glue('
+My name is {My_name},
+           my age last year was {My_age - 2},
+   my twitter handle is @{My_twitter}.
+')
+```
+
+    * If we don't want to create permament variables for those string, we can pass them *after* the string as on-the-fly parameters
+_
+```{r}
+glue('Today is {_____} and the sun shines.',
+     today_date = Sys.Date())
+```
+
+    * use a `format()`ting
+
+```{r}
+phrase <- 'Today is {today_date} and the sun shines.'
+glue(_____,
+     today_date = format(Sys.Date(), "%A, %B %d, %Y"))
+```
+
+`glue` also works with data frames, via the `glue_data()` function.
+
+```{r}
+singer_locations %>%
+ filter(!is.na(city)) %>%
+ glue_data("{_____} is from the city of {_____}.") %>%
+  head()
+```
+
+
+### Stringr for the string practitioner
+
+The package `stringr` provides a wide variety of string manipulation functions.
+
+```{r}
+getNamespaceExports("stringr")
+```
+
+
+There's a bunch of them starting with `str_`.
+Let's take a look a `str_view()`:
+
+```{r}
+getNamespaceExports("stringr") %>%
+  str_view("_____")
+```
+
+A similar function is `str_subset()`.
+
+```{r}
+getNamespaceExports("stringr") %>%
+  str_subset("_____")
+```
+
+##### Challenge
+
+Let's use `str_subset()` to identify all the bands' places containing the string `new`.
+
+```{r}
+places %>%
+  str_subset("____")
+```
+
+
+## Character vectors: where they fit in
+
+### Resources
+
+#### Manipulating character vectors
+
+- __stringr package__
+  
+    * A non-core package in the tidyverse. 
+    * Main functions start with `str_`.
+    * Replacements for base functions re: string manipulation and regular expressions (see below).
+    * Greater consistency about inputs and outputs.
+    
+    
+- __tidyr package__
+
+    * Especially useful for functions that split 1 character vector into many and *vice versa*: `separate()`, `unite()`, `extract()`.
+    * Base functions: `nchar()`, `strsplit()`, `substr()`, `paste()`, `paste0()`.
+    
+- __glue package__
+
+    * fantastic for string interpolation. 
+    * If `stringr::str_interp()` doesn't get your job done, check out glue.
+
+
+
+## Load stringr and the core tidyverse
+
+```{r}
+library(tidyverse)
+library(stringr)
+```
+
+### Regex-free string manipulation with stringr and tidyr
+
+- __ Detect or filter on a target string__
+
+    * Which fruits actually use the word "fruit"?
+
+```{r}
+str_detect(fruit, pattern = "fruit")
+```
+
+    * to get the actual fruits that match
+
+```{r}
+(my_fruit <- str_subset(fruit, pattern = "fruit"))
+```
+
+- __String splitting by delimiter__
+
+```{r}
+str_split(my_fruit, pattern = " ")
+```
+
+    * to commit to the number of pieces, you can use `str_split_fixed()` and get a character matrix.
+
+```{r}
+str_split_fixed(my_fruit, pattern = " ", n = 2)
+```
+
+    * to-be-split variable lives in a data frame, `tidyr::separate()` will split it into 2 or more variables.
+
+```{r}
+my_fruit_df <- tibble(my_fruit)
+my_fruit_df %>% 
+  separate(my_fruit, into = c("pre", "post"), sep = " ")
+```
+
+- __Substring extraction (and replacement) by position__
+
+    * Count characters in your strings with `str_length()`. 
+    
+```{r}
+length(my_fruit)
+str_length(my_fruit)
+```
+
+    * snip out substrings based on character position with `str_sub()`.
+
+```{r}
+head(fruit) %>% 
+  str_sub(1, 3)
+```
+
+    * The `start` and `end` arguments are vectorised. 
+```{r}
+tibble(fruit) %>% 
+  head() %>% 
+  mutate(snip = str_sub(fruit, 1:6, 3:8))
+```
+
+    * `str_sub()` also works for assignment, i.e. on the left hand side of `<-`.
+
+```{r}
+(x <- head(fruit, 3))
+str_sub(x, 1, 3) <- "AAA"
+x
+```
+
+- __Collapse a vector__
+
+    * collapse a character vector of length `n > 1` to a single string with `str_c()`.
+
+```{r}
+head(fruit) %>% 
+  str_c(collapse = ", ")
+```
+
+### Create a character vector by catenating multiple vectors
+
+If you have two or more character vectors of the same length, you can glue them together element-wise, to get a new vector of that length. Here are some ... awful smoothie flavors?
+
+```{r}
+str_c(fruit[1:4], fruit[5:8], sep = " & ")
+```
+
+Element-wise catenation can be combined with collapsing.
+
+```{r}
+str_c(fruit[1:4], fruit[5:8], sep = " & ", collapse = ", ")
+```
+
+If the to-be-combined vectors are variables in a data frame, you can use `tidyr::unite()` to make a single new variable from them
+
+```{r}
+fruit_df <- tibble(
+  fruit1 = fruit[1:4],
+  fruit2 = fruit[5:8]
+)
+fruit_df %>% 
+  unite("flavor_combo", fruit1, fruit2, sep = " & ")
+```
+
+- __Substring replacement__
+
+    * replace a pattern with `str_replace()`
+
+```{r}
+str_replace(my_fruit, pattern = "fruit", replacement = "THINGY")
+```
+
+    * replacing `NA`, for which there is `str_replace_na()`.
+
+```{r}
+melons <- str_subset(fruit, pattern = "melon")
+melons[2] <- NA
+melons
+str_replace_na(melons, "UNKNOWN MELON")
+```
+
+If the `NA`-afflicted variable lives in a data frame, you can use `tidyr::replace_na()`.
+
+```{r}
+tibble(melons) %>% 
+  replace_na(replace = list(melons = "UNKNOWN MELON"))
+```
+
+
+## Regular expressions with stringr
+
+![](img/regexbytrialanderror-big-smaller.png)
+
+### Load Gapminder
+
+`r nlevels(gapminder::gapminder$country)` unique country names to the object `countries`.
+
+```{r}
+library(gapminder)
+countries <- levels(gapminder$country)
+```
+
+### Characters with special meaning
+
+- The first metacharacter is the period `.`, which stands for any single character, except a newline (which by the way, is represented by `\n`). 
+    
+    * The regex `a.b` will match all countries that have an `a`, followed by any single character, followed by `b`. 
+    
+```{r}
+str_subset(countries, pattern = "i.a")
+```
+
+- **Anchors**: The `^` indicates the beginning of string and `$` indicates the end.
+
+    * Note how the regex `i.a$` matches many fewer countries than `i.a` alone. Likewise, more elements of `my_fruit` match `d` than `^d`, which requires "d" at string start.
+
+```{r}
+str_subset(countries, pattern = "i.a$")
+str_subset(my_fruit, pattern = "d")
+str_subset(my_fruit, pattern = "^d")
+```
+
+- The metacharacter `\b` indicates a **word boundary** and `\B` indicates NOT a word boundary. 
+
+
+```{r}
+str_subset(fruit, pattern = "melon")
+str_subset(fruit, pattern = "\\bmelon")
+str_subset(fruit, pattern = "\\Bmelon")
+```
+
+### Character classes
+
+- Character classes are usually given inside square brackets, `[]` but a few come up so often that we have a metacharacter for them, such as `\d` for a single digit.
+
+```{r}
+## make a class "by hand"
+str_subset(countries, pattern = "[nls]ia$")
+## use ^ to negate the class
+str_subset(countries, pattern = "[^nls]ia$")
+```
+
+- to match whitespace: the `\s` metacharacter and the POSIX class `[:space:]`. 
+
+    * Notice that we must prepend an extra backslash `\` to escape `\s` and the POSIX class has to be surrounded by two sets of square brackets.
+
+```{r}
+## remember this?
+# str_split_fixed(fruit, pattern = " ", n = 2)
+## alternatives
+str_split_fixed(my_fruit, pattern = "\\s", n = 2)
+str_split_fixed(my_fruit, pattern = "[[:space:]]", n = 2)
+```
+
+- see the country names that contain punctuation.
+
+```{r}
+str_subset(countries, "[[:punct:]]")
+```
+
+### Quantifiers
+
+
+| quantifier | meaning   | quantifier | meaning                    |
+|------------|-----------|------------|----------------------------|
+| *          | 0 or more | {n}        | exactly n                  |
+| +          | 1 or more | {n,}       | at least n                 |
+| ?          | 0 or 1    | {,m}       | at most m                  |
+|            |           | {n,m}      | between n and m, inclusive |
+
+
+```{r}
+(matches <- str_subset(fruit, pattern = "l.*e"))
+```
+
+
+```{r}
+list(match = intersect(matches, str_subset(fruit, pattern = "l.+e")),
+     no_match = setdiff(matches, str_subset(fruit, pattern = "l.+e")))
+```
+
+
+```{r}
+list(match = intersect(matches, str_subset(fruit, pattern = "l.?e")),
+     no_match = setdiff(matches, str_subset(fruit, pattern = "l.?e")))
+```
+
+
+```{r}
+list(match = intersect(matches, str_subset(fruit, pattern = "le")),
+     no_match = setdiff(matches, str_subset(fruit, pattern = "le")))
+```
+
+### Escaping
+
+characters with special meaning in regexes, including `$ * + . ? [ ] ^ { } | ( ) \`.
+
+TO *escape* it by prepending a backslash. 
+you need to preprend two backslashes in order to match a literal plus sign in a regex.
+
+#### Escapes in plain old strings
+
+- To escape quotes inside quotes:
+
+    ```{r}
+    cat("Do you use \"airquotes\" much?")
+    ```
+
+- To insert newline (`\n`) or tab (`\t`):
+    ```{r}
+    cat("before the newline\nafter the newline")
+    cat("before the tab\tafter the tab")
+    ```
+
+#### Escapes in regular expressions
+
+```{r}
+## cheating using a POSIX class ;)
+str_subset(countries, pattern = "[[:punct:]]")
+## using two backslashes to escape the period
+str_subset(countries, pattern = "\\.")
+```
+
+A last example that matches an actual square bracket.
+
+```{r}
+(x <- c("whatever", "X is distributed U[0,1]"))
+str_subset(x, pattern = "\\[")
+```
+
+### References
+
+  * STAT 545 [2014 Intro to regular expressions](block022_regular-expression.html) by TA Gloria Li.
+  
+  * The [Strings chapter](http://r4ds.had.co.nz/strings.html) of [R for Data Science](http://r4ds.had.co.nz).
+
+[stat545, Regular expressions and character data](http://stat545.com/cm101_character-data-regex.html)
+

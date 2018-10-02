@@ -1,0 +1,49 @@
+---
+title: "Useful Program tips"
+date: "2018-07-11"
+output: html_document
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
+## broken packages reinstall
+
+```
+broken = names(which(
+  sapply(rownames(installed.packages()), function(i) {
+    system2('Rscript', c('-e', shQuote(sprintf('library(%s)', i))))
+  }) != 0
+))
+if (length(broken)) install.packages(broken)
+```
+
+
+## Generate a photo-gallery README for a directory of figs
+
+`README`-only repos vs gists : 
+
+  * [PNGs README gallery](https://github.com/Reproducible-Science-Curriculum/rr-organization1/tree/27883c8fc4cdd4dcc6a8232f1fe5c726e96708a0/slides/organization-slides) 
+
+
+`�``{r, results ="asis"}
+
+fig_files <- dir(pattern = "jpg$") 
+paste0("* ", fig_files, " ![]](", fig_files, ")\n")
+`�``
+
+
+
+## file download
+
+```{r include = FALSE}
+
+if (!file.exists("data/trump_tweets_df.rda")) {
+  download.file("http://varianceexplained.org/files/trump_tweets_df.rda",
+                "trump_tweets_df.rda")
+}
+```
+
+

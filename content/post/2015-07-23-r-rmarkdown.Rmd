@@ -1,0 +1,15 @@
+---
+title: "Course Initiated"
+author: "Dookyung Kim"
+date: 2018-07-10T21:13:14-05:00
+#categories: ["R"]
+#tags: ["R Markdown", "plot", "regression"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+# 이번 과정을 만드는 이유
+
+Big Data Analytic with R 과정 개발을 시작합니다. 

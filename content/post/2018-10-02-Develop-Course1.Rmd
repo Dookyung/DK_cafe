@@ -1,0 +1,16 @@
+---
+title: "DS with R opened"
+author: "Dookyung Kim"
+date: 2018-10-02
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Data Science with R is opened
+
+enjoy!
+
+Dookyung Kim

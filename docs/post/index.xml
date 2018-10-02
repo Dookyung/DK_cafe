@@ -7,26 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 10 Jul 2018 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 02 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Course Initiated</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Tue, 10 Jul 2018 21:13:14 -0500</pubDate>
+      <title>DS with R opened</title>
+      <link>/post/2018-10-02-develop-course1/</link>
+      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>이번 과정을 만드는 이유 Big Data Analytic with R 과정 개발을 시작합니다.</description>
+      <guid>/post/2018-10-02-develop-course1/</guid>
+      <description>Data Science with R is openedenjoy!
+Dookyung Kim
+</description>
     </item>
     
     <item>
       <title>Data Science Hub opened</title>
-      <link>/post/2018-10-02-greetings/</link>
-      <pubDate>Tue, 10 Jul 2018 21:13:14 -0500</pubDate>
+      <link>/post/2018-09-02-greetings/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/2018-10-02-greetings/</guid>
+      <guid>/post/2018-09-02-greetings/</guid>
       <description>Data Science Hub is finally openedI start to develop the course titled “Data Science with R”. At this moment, this is mainly for the Bank of Korea(BOK) staff who are interested in Data Science. However, in the future, I will open this course to the public.
 Dookyung Kim
 </description>

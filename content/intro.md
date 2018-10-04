@@ -22,22 +22,44 @@ description = "Site Introduction"
   * About Author
 
 
-## Composition of DS with R (TO BE CHANGED)
+## Composition of DS with R
 
-  * Introduction to [R](http://www.r-project.org) and the [RStudio IDE](http://www.rstudio.com/products/rstudio/)
-      - scripts, the workspace, RStudio Projects, daily workflow
-  * Version control and Collaboration with Git and [GitHub](https://github.com) in RStudio
-  * How to write functions and work with R in a functional style
-  * Data frames or "tibbles" are the core data structure for data analysis: 
-      - care for them with the tidyverse
-  * Big Data Analytics with R
-  * Data visualization with [`ggplot2`](http://ggplot2.org)
-  * Interactive pages, apps, and graphics with [Shiny](http://shiny.rstudio.com)
-  * Distribute data and code via an R package
-  * Generate reports from R scripts and [R Markdown](http://rmarkdown.rstudio.com)
-  * Automate an analytical pipeline, e.g. via `Make`
-  * Get data off the web and expose data, code, results on the web
-  * Coding style, file and project organization
+  * Intro  
+    - Data Science and Big data Analysis
+    - Base R
+    - Git and Github in RStudio for version control and Collaboration   
+
+  * R programming in the Tydiverse way
+    - Data Structure & Tidy Data
+    - Data Import    
+    - Data Wrangling with `Dplyr`
+    - Functional Programming with `purrr`
+    - Exercises with consumer price data
+    
+  * Getting data on the web
+    - Intro to Restful API (Exercise with Euro stat data)
+    - CSV, XML, JSON
+    - Web scraping (Exercise with Naver API)
+    - Exercise with House trade data
+
+  * High Performance R programming
+    - Parallelization with `foreach`, `parallel`, `multidplyr`
+    - `feather`, Fast On-Disk Format for Data Frames 
+    - Using Database with `RSQLite`
+    - General-purpose Distributed cluster-computing framework, `Spark`, with `sparklyr`
+    - Exercise with flight data
+
+  * Discursion Topics
+    - Text mining
+    - Data visualization with `ggplot2`
+    - Machine Learning with `H2o`
+
+  * R applications
+    - Reproducible Research with `Rmarkdown`
+    - Interactive web with `Shiny`
+    - R Package Development
+    - Automate an analytical pipeline, e.g. via `Make`
+
 
 <br>
   
@@ -47,7 +69,7 @@ description = "Site Introduction"
   * [Advanced R - Wickham - Chapman and Hall/CRC, 2014](http://adv-r.had.co.nz/)
   * [R Packages - Wickham - O'Reilly, 2015](http://r-pkgs.had.co.nz/)
 
-    
+
   * [Stat545.com](http://stat545.com/)
 
 <br>
@@ -63,7 +85,7 @@ description = "Site Introduction"
 
 ## Contact Information
 
-Dookyung Kim, dookyung.kim74\@gmail.com
+`dookyung.kim74@gmail.com`
 
 <br>
 

@@ -1,0 +1,194 @@
+---
+title: "Introcudtion"
+author: "Dookyung Kim"
+date: "2018-07-11"
+output: 
+    html_document:
+        css: note.css
+mainfont: NanumGothic
+---
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  width=80
+)
+
+```
+
+
+# Introduction
+
+Data science is an exciting discipline that allows you to turn raw data into understanding, insight, and knowledge. 
+In the 4th Industrial Revolution, data science have become the basis for researchers in all fields, not just for computer majors. I have worked at the Bank of Korea for almost 20 years in economic and financial market analysis, and for the last four years, I have mainly carried out data analysis.
+
+This is an applied course for economists and financial market experts with little-to-no programming experience who wish to harness growing digital and computational resources. The goal of this courses is to help you learn the most important tools in R that will allow you to do data science. After completed this course, you'll have the tools to tackle a wide variety of data science challenges, using the best parts of R. 
+
+I would like to present the best practices for data analysis for economic finance analysis based on my working experience in the Bank of Korea. The focus of the course is on generating reproducible research through the use of programming languages and version control software. 
+
+Students will leave the course with basic computational skills implemented through many computational methods and approaches to data science; while students will not become expert programmers, they will gain the knowledge of how to adapt and expand these skills as they are presented with new questions, methods, and data.
+
+
+The goal of this course is to teach you basic computational skills and provide you with the means to learn what you need to know for your own research. I start from the perspective that you want to analyze data, and programming is a means to that end. You will not become an expert programmer - that is a given. But you will learn the basic skills and techniques necessary to conduct computational social science, and gain the confidence necessary to learn new techniques as you encounter them in your research.
+
+We will cover many different topics in this course, including:
+
+Elementary programming techniques (e.g. loops, conditional statements, functions)
+Writing reusable, interpretable code
+Problem-solving - debugging programs for errors
+Obtaining, importing, and munging data from a variety of sources
+Performing statistical analysis
+Visualizing information
+Creating interactive reports
+Generating reproducible research
+How we will do this
+
+You will fail in this class. You will stumble, you will get lost, confused, not understand how to perform a task, not understand why your code is generating an error. But as Alfred so helpfully points out to Bruce Wayne, do not fall to pieces when you fail. Instead, learn to pick yourself up, recover, and learn from the experience. Consider this a lesson not only for this class, but graduate school in general.
+
+**What you will learn**
+
+Data science is a huge field, and there's no way you can master it by reading a single book. Hadley Wikham briefly defined the typical data science process as follows.
+
+```{r echo = FALSE, out.width = "75%"}
+knitr::include_graphics("img/data-science.png")
+```
+
+The course consists of three main topics:
+
+- This course covers data acquisition, pre-processing and analysis among the areas presented by Hadley. We will use the Cheatsheets of the major R packages provided by Rstudio to learn the overall programming of R and then practice this in a variety of practical cases.
+
+- The second topic of the course is big data analytics. Here we will discuss how we can effectively analyze hundreds of gigabytes of data, which are often performed in financial analysis.
+
+- In addition, you will briefly learn how to use Excel, Rmarkdown, and Shiny to make your analysis work reproachable.
+
+
+
+**Composition of DS with R**
+
+- Data Science workflow
+- Basic Principles of programing
+- How to use Rstudio
+- Git and Github in RStudio for version control and Collaboration
+
+- Base R
+- Tidyverse
+- Data Import : readr, tidyr,  readxl,  tibble
+- Dplyr,  magrittr
+
+- lubridate
+- stringr, Regualar expressions
+
+- Function & Advance R 
+- purrr, broom, forcats,modelr - 여자교수
+- Debugging, Condition Handeling
+
+Web
+- httr, jsonlite 
+- rvest, xml2
+
+R Application
+- ggplot2
+- Rmarkdown
+- shiny
+- leaflet
+- Thematic maps: cartography)
+- package development, devtools
+
+
+Bigdata
+- data.table, feather
+- parallel Processing
+- foreach
+- eurostat
+- multidplyr
+- database
+- sparklyr
+
+machine learning 
+- caret - parallel Processing
+- H2o
+
+etc
+-  haven, hms, 
+
+
+By the end of the course, you will:
+
+- Construct and execute basic programs in R using elementary programming techniques and tidyverse packages (e.g. loops, conditional statements, user-defined functions)
+- Apply stylistic principles of coding to generate reusable, interpretable code
+- Debug programs for errors
+- Identify and use external libraries to expand on base functions
+- Generate reproducible research with R Markdown
+- Implement statistical learning algorithms
+- Utilize cross validation methods
+- Visualize information and data using appropriate graphical techniques
+- Import data from files or the internet
+- Munge raw data into a tidy format
+- Scrape websites to collect data for analysis
+- Parse and analyze text documents
+- Implement programs via distributed computing platforms
+- Create interactive web pages using flexdashboard and Shiny
+
+**Composition of DS with R**
+
+  * Intro  
+    - Data Science and Big data Analysis
+    - Base R
+    - Git and Github in RStudio for version control and Collaboration   
+
+  * R programming in the Tydiverse way
+    - Data Structure & Tidy Data
+    - Data Import    
+    - Data Wrangling with `Dplyr`
+    - Functional Programming with `purrr`
+    - Exercises with consumer price data
+    
+  * Getting data on the web
+    - Intro to Restful API (Exercise with Euro stat data)
+    - CSV, XML, JSON
+    - Web scraping (Exercise with Naver API)
+    - Exercise with House trade data
+
+  * High Performance R programming
+    - Parallelization with `foreach`, `parallel`, `multidplyr`
+    - `feather`, Fast On-Disk Format for Data Frames 
+    - Using Database with `RSQLite`
+    - General-purpose Distributed cluster-computing framework, `Spark`, with `sparklyr`
+    - Exercise with flight data
+
+  * Discursion Topics
+    - Text mining
+    - Data visualization with `ggplot2`
+    - Machine Learning with `H2o`
+
+  * R applications
+    - Reproducible Research with `Rmarkdown`
+    - Interactive web with `Shiny`
+    - R Package Development
+    - Automate an analytical pipeline, e.g. via `Make`
+    
+    
+**Reference**
+
+  * [R for Data Science - Grolemund, Wickham - O'Reilly, 2016](http://r4ds.had.co.nz/)
+  * [Advanced R - Wickham - Chapman and Hall/CRC, 2014](http://adv-r.had.co.nz/)
+  * [R Packages - Wickham - O'Reilly, 2015](http://r-pkgs.had.co.nz/)
+
+
+  * [Stat545.com](http://stat545.com/)
+  * RStudio CheetSheets
+
+<br>
+
+**Recommended Software**
+
+  * R / RStudio
+  * Python
+  * Excel and VBA
+  * git, make, shell
+      
+      
+** About me **
+
+I am a Data Scienties at the Bank of Korea(BOK). I am seeking my PhD in Real Estate Finance from KunKook University. My research interests focus on house price, house, financing. Methodologically I am interested in big data analysis and machine learning. I was first drawn to programming during my work at BOK, starting out in Excel VBA, Stata and eventually making the transition to R and Python. I learned these programming languages out of necessity - I needed to process, analyze, and code hundreds of millions of house trade data and house character information which was extracted from the various web sites. I am not a computer scientist. I am a economist and market expert who uses programming and computational tools to answer my research questions.
+

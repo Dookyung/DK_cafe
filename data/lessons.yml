@@ -11,9 +11,10 @@
 lessons:
   - date: "Day1"  
     title: "Introduction"
+    note: "note-101-Introduction.html"
   - title: "  - Data Science and Big data Analysis"
   - title: "  - Base R"
-    note: "note-03-logic_in_R01.html"
+    note: "note-201-Base_R.html"
   - title: "  - Git and Github in Rstudio"   
   - title:
   - title: "R programming in the Tydiverse way"
